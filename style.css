@@ -1,0 +1,209 @@
+:root {
+    --gold: #D4AF37;
+    --dark: #121212;
+    --light: #FFFFFF;
+    --soft-gray: #f9f9f9;
+    --font-main: 'Montserrat', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+}
+
+/* Estilos Base */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-main); color: var(--dark); background: var(--light); line-height: 1.7; }
+
+/* Imagen de fondo para el Hero (Inicio) */
+.hero {
+    height: 100vh;
+    /* Cambia la URL por tu imagen real en assets */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('assets/hero-bg.jpg') center/cover no-repeat;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+/* Imágenes para las Tarjetas de Servicios */
+/* El degradado va de transparente arriba a negro abajo para resaltar el texto */
+.card-cnc {
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%), 
+                url('assets/cnc.jpeg') center/cover no-repeat !important;
+}
+
+.card-proto {
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%), 
+                url('assets/prototipo.png') center/cover no-repeat !important;
+}
+
+.card-brand {
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%), 
+                url('assets/branding.png') center/cover no-repeat !important;
+}
+
+/* Ajuste para que el texto de la tarjeta se vea mejor */
+.service-info h3 {
+    font-size: 1.5rem;
+    color: var(--gold); /* El número y título en dorado se ve muy pro */
+    margin-bottom: 5px;
+}
+
+.service-info p {
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+/* Navbar Minimalista */
+
+.navbar {
+
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+
+    padding: 20px 50px; background: rgba(255, 255, 255, 0.95);
+
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+
+}
+
+.nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; }
+
+.logo-brand { display: flex; align-items: center; font-weight: 700; letter-spacing: 2px; }
+
+.logo-brand img { height: 45px; margin-right: 15px; }
+
+.nav-links { display: flex; list-style: none; gap: 30px; }
+
+.nav-links a { text-decoration: none; color: var(--dark); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+
+.nav-links a:hover { color: var(--gold); }
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: url('https://images.unsplash.com/photo-1581092334651-ddf26d9a1930?auto=format&fit=crop&q=80') center/cover no-repeat;
+    display: flex; align-items: center; justify-content: center;
+}
+.hero-overlay { background: rgba(0,0,0,0.5); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+.hero-content { text-align: center; color: white; padding: 0 20px; }
+.hero h1 { font-family: var(--font-serif); font-size: 4rem; margin-bottom: 20px; }
+.gold-text { color: var(--gold); }
+.btn-gold { 
+    display: inline-block; padding: 15px 40px; background: var(--gold); color: white; 
+    text-decoration: none; font-weight: bold; border-radius: 2px; transition: 0.4s; margin-top: 30px;
+}
+.btn-gold:hover { background: #b8860b; transform: translateY(-3px); }
+.hero {
+    height: 100vh;
+    /* Intenta con esta línea exactamente */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('assets/hero-bg.jpg') center/cover no-repeat;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+/* Story Section (Misión/Visión) */
+.story-section { padding: 100px 10%; background: var(--soft-gray); }
+.story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.story-text h2 { font-family: var(--font-serif); font-size: 2.5rem; margin-bottom: 30px; }
+.mision-item, .vision-item { margin-bottom: 30px; }
+.mision-item h3, .vision-item h3 { color: var(--gold); margin-bottom: 10px; font-size: 1.2rem; }
+.image-placeholder { height: 500px; background: #ddd; border-radius: 5px; } /* Aquí irá tu foto real */
+/* Reemplaza o añade esto en tu CSS */
+.story-image {
+    width: 100%;
+    height: 500px; /* Mantiene la altura que tenía tu diseño original */
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.img-esencia {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Esto es clave: hace que la imagen se ajuste sin estirarse */
+    display: block;
+    transition: transform 0.5s ease; /* Efecto suave al pasar el mouse */
+}
+
+/* Opcional: un pequeño efecto de zoom al pasar el mouse */
+.story-image:hover .img-esencia {
+    transform: scale(1.05);
+}
+
+/* Services Gallery */
+.services-section { padding: 100px 10%; text-align: center; }
+.section-header h2 { font-family: var(--font-serif); font-size: 2.5rem; }
+.underline { width: 60px; height: 3px; background: var(--gold); margin: 20px auto 50px; }
+.services-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.service-card { 
+    height: 400px; background: #222; display: flex; align-items: flex-end; padding: 30px;
+    transition: 0.5s; cursor: pointer; border: 1px solid rgba(255,255,255,0.1);
+}
+.service-card:hover { transform: scale(1.02); border-color: var(--gold); }
+.service-info { color: white; text-align: left; }
+
+/* --- SECCIÓN CONTACTO ESTILO PREMIUM --- */
+.contact-section {
+    padding: 100px 10%;
+    background-color: #121212; /* Fondo negro profundo para que resalte el blanco */
+    color: white;
+    text-align: center;
+}
+
+.contact-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    text-transform: uppercase; /* ESTO HACE QUE EL TEXTO SEA MAYÚSCULA */
+    letter-spacing: 3px;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.contact-links p {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+/* Iconos en dorado para mantener el estilo Atelier */
+.contact-links i {
+    color: var(--gold); 
+    margin-right: 15px;
+    font-size: 1.5rem;
+}
+
+/* ENLACES (Correo e IG) EN BLANCO */
+.contact-links a {
+    color: #ffffff; 
+    text-decoration: none;
+    transition: 0.3s;
+    font-weight: 300;
+}
+
+.contact-links a:hover {
+    color: var(--gold); /* Cambia a dorado suavemente al pasar el mouse */
+    opacity: 0.8;
+}
+
+/* Botón de WhatsApp Dorado Estilizado */
+.btn-whatsapp {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 15px 40px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: 0.4s;
+}
+
+.btn-whatsapp:hover {
+    background-color: var(--gold);
+    color: #000; /* Fondo dorado con letras negras al pasar el mouse */
+}
+
+/* Footer */
+footer { padding: 50px; text-align: center; font-size: 12px; letter-spacing: 2px; color: #666; }

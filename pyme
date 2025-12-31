@@ -1,0 +1,6 @@
+pyme/
+│
+├── index.html         ← Página principal
+├── styles.css         ← Estilos personalizados
+├── script.js          ← (opcional) Interactividad
+└── assets/            ← Imágenes, logos, íconos
