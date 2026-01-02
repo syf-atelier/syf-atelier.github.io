@@ -472,28 +472,51 @@ footer { padding: 50px; text-align: center; font-size: 12px; letter-spacing: 2px
 
 
 
+   @media (max-width: 768px) {
+    /* ... otros estilos de móvil ... */
+
     /* Ajustes de las secciones para que no se amontonen */
 
-    .story-grid, .services-gallery {
+    /* DENTRO DE @media (max-width: 768px) { ... } */
 
-        grid-template-columns: 1fr; /* Una sola columna en celular */
-
-        gap: 40px;
-
+    /* 1. ARREGLO DEL CONTENEDOR PRINCIPAL */
+    .story-grid {
+        /* Forzamos UNA sola columna, apilando texto sobre imagen */
+        grid-template-columns: 1fr !important; 
+        gap: 30px; /* Espacio entre el texto y la imagen */
+        text-align: center; /* Opcional: centra el texto para que se vea ordenado */
     }
 
 
-
-    .hero h1 {
-
-        font-size: 2.5rem;
-
+    /* TRANSFORMACIÓN A SLIDER SOLO EN MÓVIL */
+    .services-gallery {
+        display: flex; /* Cambiamos de grid a flex para ponerlas de lado */
+        grid-template-columns: none; /* Desactivamos el grid */
+        overflow-x: auto; /* Permite deslizar hacia los lados */
+        scroll-snap-type: x mandatory; /* Hace que las tarjetas "encajen" al centro */
+        gap: 15px;
+        padding: 20px 10%; /* Permite ver un asomo de la tarjeta siguiente */
+        scrollbar-width: none; /* Oculta la barra en Firefox */
     }
+
+    .services-gallery::-webkit-scrollbar {
+        display: none; /* Oculta la barra en Chrome/Safari */
+    }
+
+    .service-card {
+        min-width: 85vw; /* Cada tarjeta ocupa casi todo el ancho del celular */
+        flex: 0 0 auto;  /* Evita que se encojan */
+        scroll-snap-align: center; /* Se detiene justo al medio */
+    }
+}
+
     /* --- ARREGLO IMAGEN "NUESTRA ESENCIA" EN MÓVIL --- */
     /* Quitamos la altura forzada de 500px del contenedor */
+     /* 2. ARREGLO DE LA IMAGEN (Lo que ya teníamos, ajustado) */
     .story-image {
-        height: auto !important; 
-        margin-top: 20px; /* Un poco de aire arriba para separarla del texto */
+        width: 100%; /* Que ocupe todo el ancho del celular */
+        height: auto !important; /* Altura automática según la imagen */
+        margin-top: 10px;
     }
 
     /* Hacemos que la imagen se adapte al ancho y se vea completa */
@@ -590,6 +613,4 @@ footer { padding: 50px; text-align: center; font-size: 12px; letter-spacing: 2px
     }
 
 }
-
-
 
