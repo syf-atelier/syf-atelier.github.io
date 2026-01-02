@@ -67,21 +67,21 @@
             <div class="services-gallery">
               <div class="service-card card-cnc">
                 <div class="service-info">
-                    <h3>01. Diseño CNC</h3>
+                    <h3>Diseño CNC</h3>
                     <p>Precisión absoluta en cada corte.</p>
                 </div>
             </div>
     
             <div class="service-card card-proto">
               <div class="service-info">
-                <h3>02. Prototipado</h3>
+                <h3>Prototipado</h3>
                 <p>Modelos funcionales de alta fidelidad.</p>
               </div>
             </div>
     
             <div class="service-card card-brand">
                <div class="service-info">
-                <h3>03. Branding</h3>
+                <h3>Branding</h3>
                 <p>Identidad visual para proyectos técnicos.</p>
                </div>
             </div>
@@ -116,6 +116,11 @@
 
     <script src="script.js"></script>
 
+     <div class="assistant-float" id="ai-button">
+      <i class="fa-solid fa-robot"></i>
+      <span>Consultar IA</span>
+     </div>
+
     <a href="https://api.whatsapp.com/send/?phone=56935662568&text=Hola%20S&F%20Atelier,%20me%20gustaría%20cotizar%20un%20proyecto." 
        class="whatsapp-float" 
        target="_blank" 
@@ -123,5 +128,9 @@
          <i class="fa-brands fa-whatsapp"></i>
          <span>Cotizar ahora</span>
     </a>
+    <script>
+      (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="hB80GNT3mZ2aCqqXIPLuM";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+    </script>
+    
 </body>
 </html>
