@@ -55,14 +55,18 @@ body { font-family: var(--font-main); color: var(--dark); background: var(--ligh
 /* Navbar Minimalista */
 
 .navbar {
-
-    position: fixed; top: 0; width: 100%; z-index: 1000;
-
-    padding: 20px 50px; background: rgba(255, 255, 255, 0.95);
-
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    z-index: 1000;
+    padding: 20px 50px; 
+    background: #000000; /* CAMBIO A NEGRO */
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
+
+/* Asegúrate de que el nombre de la empresa y links sean blancos o dorados */
+.logo-brand span { color: var(--gold); }
+.nav-links a { color: #ffffff; }
 
 .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; }
 
@@ -207,3 +211,96 @@ body { font-family: var(--font-main); color: var(--dark); background: var(--ligh
 
 /* Footer */
 footer { padding: 50px; text-align: center; font-size: 12px; letter-spacing: 2px; color: #666; }
+
+/* =============================================
+   3. CONFIGURACIÓN FINAL PARA MÓVILES 
+   ============================================= */
+
+@media (max-width: 768px) {
+    /* Mostramos el botón de hamburguesa */
+    .menu-toggle {
+        display: block; 
+        color: var(--gold); /* Cambia a var(--gold) si quieres que resalte más */
+        z-index: 1001;
+    }
+
+    /* Configuramos la lista de enlaces como un panel lateral */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Totalmente fuera de la pantalla a la derecha */
+        background-color: #000000; /* Fondo negro sólido para elegancia */
+        width: 80%; /* No ocupa todo el ancho para que se vea el fondo */
+        height: 100vh;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        transition: 0.5s cubic-bezier(0.77,0.2,0.05,1.0); /* Animación fluida */
+        z-index: 1000;
+        box-shadow: -10px 0 20px rgba(0,0,0,0.5);
+    }
+
+    /* ESTA ES LA CLAVE: Cuando JS agrega 'active', el menú entra a la pantalla */
+    .nav-links.active {
+        right: 0 !important;
+    }
+
+    .nav-links a {
+        font-size: 1.5rem;
+        color: white;
+        letter-spacing: 2px;
+    }
+
+    /* Ajustes de las secciones para que no se amontonen */
+    .story-grid, .services-gallery {
+        grid-template-columns: 1fr; /* Una sola columna en celular */
+        gap: 40px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* --- BOTÓN FLOTANTE DE WHATSAPP --- */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--gold); /* Usamos tu variable de oro */
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 50px; /* Bordes redondeados tipo cápsula */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float i {
+    font-size: 22px;
+}
+
+.whatsapp-float:hover {
+    transform: translateY(-5px); /* Efecto de levitación */
+    background-color: #b8860b; /* Un dorado un poco más oscuro al pasar el mouse */
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+/* En móviles muy pequeños, ocultamos el texto para que solo quede el icono redondo */
+@media (max-width: 480px) {
+    .whatsapp-float {
+        padding: 15px;
+        bottom: 20px;
+        right: 20px;
+    }
+    .whatsapp-float span {
+        display: none;
+    }
+}
