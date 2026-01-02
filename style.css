@@ -489,6 +489,21 @@ footer { padding: 50px; text-align: center; font-size: 12px; letter-spacing: 2px
         font-size: 2.5rem;
 
     }
+    /* --- ARREGLO IMAGEN "NUESTRA ESENCIA" EN MÓVIL --- */
+    /* Quitamos la altura forzada de 500px del contenedor */
+    .story-image {
+        height: auto !important; 
+        margin-top: 20px; /* Un poco de aire arriba para separarla del texto */
+    }
+
+    /* Hacemos que la imagen se adapte al ancho y se vea completa */
+    .img-esencia {
+        width: 100%;      /* Ocupa todo el ancho disponible */
+        height: auto !important;     /* La altura se calcula sola según el ancho */
+        object-fit: contain !important; /* CLAVE: Muestra la imagen entera sin recortar */
+        max-height: 300px; /* Opcional: limita la altura máxima si tu imagen es muy alta */
+        border-radius: 5px;
+    }
 
 }
 
@@ -575,5 +590,6 @@ footer { padding: 50px; text-align: center; font-size: 12px; letter-spacing: 2px
     }
 
 }
+
 
 
