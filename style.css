@@ -574,48 +574,6 @@ footer { padding: 50px; text-align: center; font-size: 12px; letter-spacing: 2px
 
     }
 
-/* --- BOTÓN FLOTANTE ASISTENTE IA --- */
-.assistant-float {
-    position: fixed;
-    bottom: 30px;
-    left: 30px; /* LADO IZQUIERDO */
-    background-color: #333333; /* Gris oscuro para diferenciarlo del dorado */
-    color: #ffffff;
-    padding: 12px 20px;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 14px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    z-index: 1000;
-    transition: all 0.3s ease;
 }
 
-.assistant-float:hover {
-    transform: translateY(-5px);
-    background-color: #555555;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-}
-
-.assistant-float i {
-    font-size: 20px;
-    color: var(--gold); /* Un pequeño detalle en dorado para unirlo a la marca */
-}
-
-/* Ajuste para móviles */
-@media (max-width: 480px) {
-    .assistant-float {
-        padding: 15px;
-        bottom: 20px;
-        left: 20px;
-    }
-    .assistant-float span {
-        display: none; /* Solo queda el icono del robot en celulares pequeños */
-    }
-}
-
-}
 
