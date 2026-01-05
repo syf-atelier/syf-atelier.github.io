@@ -234,7 +234,12 @@ body { font-family: var(--font-main); color: var(--dark); background: var(--ligh
 
 /* Services Gallery */
 
-.services-section { padding: 100px 10%; text-align: center; }
+.services-section { padding: 100px 10%; text-align: center; 
+/* --- LÍNEAS NUEVAS --- */
+    position: relative; /* Esto convierte a la sección en el "ancla" */
+    padding-bottom: 60px; /* Hacemos espacio extra abajo para que quepan los puntos */
+
+}
 
 .section-header h2 { font-family: var(--font-serif); font-size: 2.5rem; }
 
@@ -637,7 +642,14 @@ footer { padding: 50px; text-align: center; font-size: 12px; letter-spacing: 2px
 /* Mostrar solo en móviles */
 @media (max-width: 768px) {
     .slider-dots {
-        display: flex;
+        display: flex; /* Se mantienen visibles en móvil */
+        position: absolute; /* Se salen del flujo normal para poder fijarlos */
+        bottom: 20px; /* Se quedan a 20px del borde inferior de la sección */
+        left: 50%; /* Se mueven a la mitad de la pantalla */
+        transform: translateX(-50%); /* Se centran perfectamente sobre su propio eje */
+        z-index: 10; /* Asegura que queden por encima de las imágenes */
+        gap: 10px;
+        /* Ya no necesitamos el margin-top aquí */
     }
 }
 
