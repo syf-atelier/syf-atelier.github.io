@@ -20,3 +20,17 @@ document.querySelectorAll('.nav-links a').forEach(link => {
         icon.classList.remove('fa-xmark');
     });
 });
+const gallery = document.querySelector('.services-gallery');
+const dots = document.querySelectorAll('.dot');
+
+gallery.addEventListener('scroll', () => {
+    // Calculamos qué tarjeta está más cerca del centro
+    const width = gallery.clientWidth;
+    const scrollPosition = gallery.scrollLeft;
+    const index = Math.round(scrollPosition / width);
+
+    // Limpiamos la clase 'active' de todos y se la damos al actual
+    dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+    });
+});
