@@ -687,3 +687,117 @@ footer { padding: 50px; text-align: center; font-size: 12px; letter-spacing: 2px
     margin-right: 8px;
     color: var(--gold);
 }
+
+/* --- SECCIÓN UBICACIÓN MAPA DARK --- */
+.location-section {
+    padding: 80px 0; /* Quitamos padding lateral para que el mapa llegue a los bordes */
+    background-color: var(--dark); /* Fondo oscuro para continuidad */
+    text-align: center;
+}
+
+.location-section .section-header h2 {
+    color: white;
+}
+
+.map-container {
+    position: relative; /* Necesario para que el texto flote encima */
+    width: 100%;
+    height: 400px; /* Altura fija para el banner del mapa */
+    overflow: hidden;
+    margin-top: 40px;
+    border-top: 1px solid rgba(212, 175, 55, 0.3); /* Sutil línea dorada arriba */
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3); /* Sutil línea dorada abajo */
+}
+
+/* 1. Preparamos la imagen para que el cambio sea suave */
+.map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.5s ease, transform 0.5s ease; /* Esta es la clave del efecto */
+}
+
+/* 2. Aquí está lo que no encontrabas: El efecto al pasar el mouse o hacer clic */
+.map-container:hover .map-image {
+    filter: brightness(0.6) blur(5px); /* Se oscurece y se difumina */
+    transform: scale(1.05); /* Un pequeño zoom de ingeniería */
+}
+
+/* Contenedor del texto sobre el mapa */
+.map-overlay {
+    position: absolute;
+    top: 5px; /* Lo posiciona a 30px del borde superior */
+    left: 50%;
+    color: white;
+    width: 80%;
+    z-index: 2;
+    transform: translateX(-50%); /* Solo lo centra horizontalmente */
+    pointer-events: none;
+}
+
+.location-title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--gold);
+}
+
+.location-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+/* La etiqueta de "Atención Online" */
+.online-badge {
+    position: absolute; /* La fijamos de forma absoluta */
+    bottom: 30px;       /* A 30px del borde inferior */
+    left: 50%;          /* Centrada horizontalmente */
+    transform: translateX(-50%); /* Ajuste fino del centrado */
+    
+    /* Estilos visuales (se mantienen) */
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: rgba(0,0,0,0.8); /* Un poco más oscuro para contraste */
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    border-radius: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    z-index: 3; /* Asegura que quede sobre el mapa */
+    transition: all 0.3s ease; /* Suaviza cualquier cambio */
+}
+
+/* 3. Posicionamos la etiqueta dorada en la parte inferior */
+.online-badge {
+    position: absolute;
+    bottom: 30px; /* La fijamos abajo */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    z-index: 10;
+    pointer-events: none; /* Para que no interfiera con el clic en el mapa */
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+    .map-container {
+        height: 300px; /* Un poco más bajo en celular */
+    }
+  .location-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 5px; /* Reducimos drásticamente el margen */
+}
+    .map-overlay {
+        width: 95%; /* Más ancho para el texto en pantalla pequeña */
+    }
+}
+
+
+
+
+
