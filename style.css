@@ -1,803 +1,159 @@
 :root {
-
     --gold: #D4AF37;
-
     --dark: #121212;
-
     --light: #FFFFFF;
-
     --soft-gray: #f9f9f9;
-
     --font-main: 'Montserrat', sans-serif;
-
     --font-serif: 'Playfair Display', serif;
-
 }
-
-
-/* Estilos Base */
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
+body { font-family: var(--font-main); color: var(--dark); background: var(--light); line-height: 1.7; overflow-x: hidden; }
 
-body { font-family: var(--font-main); color: var(--dark); background: var(--light); line-height: 1.7; }
-
-
-/* Imagen de fondo para el Hero (Inicio) */
-
-.hero {
-
-    height: 100vh;
-
-    /* Cambia la URL por tu imagen real en assets */
-
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-
-                url('assets/hero-bg.jpg') center/cover no-repeat;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-}
-
-
-
-/* Imágenes para las Tarjetas de Servicios */
-
-/* El degradado va de transparente arriba a negro abajo para resaltar el texto */
-
-.card-cnc {
-
-    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%),
-
-                url('assets/cnc.jpeg') center/cover no-repeat !important;
-
-}
-
-
-
-.card-proto {
-
-    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%),
-
-                url('assets/prototipo.png') center/cover no-repeat !important;
-
-}
-
-
-
-.card-brand {
-
-    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%),
-
-                url('assets/branding.png') center/cover no-repeat !important;
-
-}
-
-
-
-/* Ajuste para que el texto de la tarjeta se vea mejor */
-
-.service-info h3 {
-
-    font-size: 1.5rem;
-
-    color: var(--gold); /* El número y título en dorado se ve muy pro */
-
-    margin-bottom: 5px;
-
-}
-
-
-
-.service-info p {
-
-    font-size: 0.9rem;
-
-    color: #fff;
-
-}
-
-
-
-/* Navbar Minimalista */
-
-
-
-.navbar {
-
-    position: fixed;
-
-    top: 0;
-
-    width: 100%;
-
-    z-index: 1000;
-
-    padding: 20px 50px;
-
-    background: #000000; /* CAMBIO A NEGRO */
-
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-
-}
-
-
-
-/* Asegúrate de que el nombre de la empresa y links sean blancos o dorados */
-
-.logo-brand span { color: var(--gold); }
-
-.nav-links a { 
-    text-decoration: none;   /* Quita la línea de abajo */
-    color: #ffffff;          /* Color blanco */
-    text-transform: uppercase; /* <--- ESTO HACE QUE TODO SEA MAYÚSCULAS */
-    font-size: 13px;         /* Tamaño de letra original */
-    letter-spacing: 1px;     /* Espacio entre letras para toque premium */
-}
-
-
+/* NAVBAR */
+.navbar { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 20px 50px; background: #000000; border-bottom: 1px solid rgba(255,255,255,0.1); }
 .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; }
-
-
-
 .logo-brand { display: flex; align-items: center; font-weight: 700; letter-spacing: 2px; }
-
-
-
 .logo-brand img { height: 45px; margin-right: 15px; }
-
-
-
+.logo-brand span { color: var(--gold); }
 .nav-links { display: flex; list-style: none; gap: 30px; }
-
-
+.nav-links a { text-decoration: none; color: #ffffff; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; transition: 0.3s; }
 .nav-links a:hover { color: var(--gold); }
+.menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
 
-.hero-overlay { background: rgba(0,0,0,0.5); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
-
-.hero-content { text-align: center; color: white; padding: 0 20px; }
-
-.hero h1 { font-family: var(--font-serif); font-size: 4rem; margin-bottom: 20px; }
-
-.gold-text { color: var(--gold); }
-
-.btn-gold {
-
-    display: inline-block; padding: 15px 40px; background: var(--gold); color: white;
-
-    text-decoration: none; font-weight: bold; border-radius: 2px; transition: 0.4s; margin-top: 30px;
-
+/* HERO */
+.hero {
+    height: 100vh;
+    /* CAMBIO 1: Aumentamos la opacidad de 0.5 a 0.7 para oscurecer más el fondo */
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('assets/hero-bg.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
+.gold-text {
+    color: var(--gold) !important; /* Usamos !important para asegurar que gane sobre el blanco */
+}
+.hero-content {
+    text-align: center;
+    color: white; /* El resto del texto será blanco */
+    padding: 0 20px;
+}
+.hero h1 { font-family: var(--font-serif); font-size: 4rem; margin-bottom: 20px; }
+.btn-gold { display: inline-block; padding: 15px 40px; background: var(--gold); color: white; text-decoration: none; font-weight: bold; border-radius: 2px; transition: 0.4s; margin-top: 30px; }
 .btn-gold:hover { background: #b8860b; transform: translateY(-3px); }
 
-/* Story Section (Misión/Visión) */
-
+/* NOSOTROS */
 .story-section { padding: 100px 10%; background: var(--soft-gray); }
-
 .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-
 .story-text h2 { font-family: var(--font-serif); font-size: 2.5rem; margin-bottom: 30px; }
-
-.mision-item, .vision-item { margin-bottom: 30px; }
-
-.mision-item h3, .vision-item h3 { color: var(--gold); margin-bottom: 10px; font-size: 1.2rem; }
-
-.image-placeholder { height: 500px; background: #ddd; border-radius: 5px; } /* Aquí irá tu foto real */
-
-/* Reemplaza o añade esto en tu CSS */
-
-.story-image {
-
-    width: 100%;
-
-    height: 500px; /* Mantiene la altura que tenía tu diseño original */
-
-    overflow: hidden;
-
-    border-radius: 5px;
-
+/* Ajuste de márgenes para claridad técnica */
+.mision-item {
+    margin-bottom: 50px; /* Aumentamos la separación */
 }
 
-
-
-.img-esencia {
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: cover; /* Esto es clave: hace que la imagen se ajuste sin estirarse */
-
-    display: block;
-
-    transition: transform 0.5s ease; /* Efecto suave al pasar el mouse */
-
-}
-
-
-
-/* Opcional: un pequeño efecto de zoom al pasar el mouse */
-
-.story-image:hover .img-esencia {
-
-    transform: scale(1.05);
-
-}
-
-
-
-/* Services Gallery */
-
-.services-section { padding: 100px 10%; text-align: center; 
-/* --- LÍNEAS NUEVAS --- */
-    position: relative; /* Esto convierte a la sección en el "ancla" */
-    padding-bottom: 60px; /* Hacemos espacio extra abajo para que quepan los puntos */
-
-}
-
-.section-header h2 { font-family: var(--font-serif); font-size: 2.5rem; }
-
-.underline { width: 60px; height: 3px; background: var(--gold); margin: 20px auto 50px; }
-
-.services-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-
-.service-card {
-
-    height: 400px; background: #222; display: flex; align-items: flex-end; padding: 30px;
-
-    transition: 0.5s; cursor: pointer; border: 1px solid rgba(255,255,255,0.1);
-
-}
-
-.service-card:hover { transform: scale(1.02); border-color: var(--gold); }
-
-.service-info { color: white; text-align: left; }
-
-
-
-/* --- SECCIÓN CONTACTO ESTILO PREMIUM --- */
-
-.contact-section {
-
-    padding: 100px 10%;
-
-    background-color: #121212; /* Fondo negro profundo para que resalte el blanco */
-
-    color: white;
-
-    text-align: center;
-
-}
-
-
-
-.contact-card h2 {
-
-    font-family: 'Playfair Display', serif;
-
-    font-size: 2.5rem;
-
-    text-transform: uppercase; /* ESTO HACE QUE EL TEXTO SEA MAYÚSCULA */
-
-    letter-spacing: 3px;
-
-    margin-bottom: 40px;
-
-    color: white;
-
-}
-
-
-
-.contact-links p {
-
-    margin: 15px 0;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
+.vision-item h3, .mision-item h3 {
+    color: var(--gold);
+    margin-bottom: 15px; /* Un poco más de espacio bajo el título dorado */
     font-size: 1.2rem;
-
-}
-
-
-
-/* Iconos en dorado para mantener el estilo Atelier */
-
-.contact-links i {
-
-    color: var(--gold);
-
-    margin-right: 15px;
-
-    font-size: 1.5rem;
-
-}
-
-
-
-/* ENLACES (Correo e IG) EN BLANCO */
-
-.contact-links a {
-
-    color: #ffffff;
-
-    text-decoration: none;
-
-    transition: 0.3s;
-
-    font-weight: 300;
-
-}
-
-
-
-.contact-links a:hover {
-
-    color: var(--gold); /* Cambia a dorado suavemente al pasar el mouse */
-
-    opacity: 0.8;
-
-}
-
-
-
-/* Botón de WhatsApp Dorado Estilizado */
-
-.btn-whatsapp {
-
-    display: inline-block;
-
-    margin-top: 40px;
-
-    padding: 15px 40px;
-
-    border: 1px solid var(--gold);
-
-    color: var(--gold);
-
-    text-decoration: none;
-
     text-transform: uppercase;
-
-    font-size: 12px;
-
-    font-weight: bold;
-
-    letter-spacing: 2px;
-
-    transition: 0.4s;
-
+    letter-spacing: 1px;
 }
-
-
-
-.btn-whatsapp:hover {
-
-    background-color: var(--gold);
-
-    color: #000; /* Fondo dorado con letras negras al pasar el mouse */
-
-}
-
-
-
-/* Footer */
-
-footer { padding: 50px; text-align: center; font-size: 12px; letter-spacing: 2px; color: #666; }
-
-
-
-/* =============================================
-
-   3. CONFIGURACIÓN FINAL PARA MÓVILES
-
-   ============================================= */
-
-
-
-@media (max-width: 768px) {
-
-    /* Mostramos el botón de hamburguesa */
-
-    .menu-toggle {
-
-        display: block;
-
-        color: var(--gold); /* Cambia a var(--gold) si quieres que resalte más */
-
-        z-index: 1001;
-
-    }
-
-
-
-    /* Configuramos la lista de enlaces como un panel lateral */
-
-    .nav-links {
-
-        position: fixed;
-
-        top: 0;
-
-        right: -100%; /* Totalmente fuera de la pantalla a la derecha */
-
-        background-color: #000000; /* Fondo negro sólido para elegancia */
-
-        width: 80%; /* No ocupa todo el ancho para que se vea el fondo */
-
-        height: 100vh;
-
-        flex-direction: column;
-
-        align-items: center;
-
-        justify-content: center;
-
-        gap: 40px;
-
-        transition: 0.5s cubic-bezier(0.77,0.2,0.05,1.0); /* Animación fluida */
-
-        z-index: 1000;
-
-        box-shadow: -10px 0 20px rgba(0,0,0,0.5);
-
-    }
-
-
-
-    /* ESTA ES LA CLAVE: Cuando JS agrega 'active', el menú entra a la pantalla */
-
-    .nav-links.active {
-
-        right: 0 !important;
-
-    }
-
-
-
-    .nav-links a {
-
-        font-size: 1.5rem;
-
-        color: white;
-
-        letter-spacing: 2px;
-
-    }
-
-
-
-   @media (max-width: 768px) {
-    /* ... otros estilos de móvil ... */
-
-    /* Ajustes de las secciones para que no se amontonen */
-
-    /* DENTRO DE @media (max-width: 768px) { ... } */
-
-    /* 1. ARREGLO DEL CONTENEDOR PRINCIPAL */
-    .story-grid {
-        /* Forzamos UNA sola columna, apilando texto sobre imagen */
-        grid-template-columns: 1fr !important; 
-        gap: 30px; /* Espacio entre el texto y la imagen */
-        text-align: center; /* Opcional: centra el texto para que se vea ordenado */
-    }
-
-
-    /* TRANSFORMACIÓN A SLIDER SOLO EN MÓVIL */
-    .services-gallery {
-        display: flex; /* Cambiamos de grid a flex para ponerlas de lado */
-        grid-template-columns: none; /* Desactivamos el grid */
-        overflow-x: auto; /* Permite deslizar hacia los lados */
-        scroll-snap-type: x mandatory; /* Hace que las tarjetas "encajen" al centro */
-        gap: 15px;
-        padding: 20px 10%; /* Permite ver un asomo de la tarjeta siguiente */
-        scrollbar-width: none; /* Oculta la barra en Firefox */
-    }
-
-    .services-gallery::-webkit-scrollbar {
-        display: none; /* Oculta la barra en Chrome/Safari */
-    }
-
-    .service-card {
-        min-width: 85vw; /* Cada tarjeta ocupa casi todo el ancho del celular */
-        flex: 0 0 auto;  /* Evita que se encojan */
-        scroll-snap-align: center; /* Se detiene justo al medio */
-    }
-}
-
-    /* --- ARREGLO IMAGEN "NUESTRA ESENCIA" EN MÓVIL --- */
-    /* Quitamos la altura forzada de 500px del contenedor */
-     /* 2. ARREGLO DE LA IMAGEN (Lo que ya teníamos, ajustado) */
-    .story-image {
-        width: 100%; /* Que ocupe todo el ancho del celular */
-        height: auto !important; /* Altura automática según la imagen */
-        margin-top: 10px;
-    }
-
-    /* Hacemos que la imagen se adapte al ancho y se vea completa */
-    .img-esencia {
-        width: 100%;      /* Ocupa todo el ancho disponible */
-        height: auto !important;     /* La altura se calcula sola según el ancho */
-        object-fit: contain !important; /* CLAVE: Muestra la imagen entera sin recortar */
-        max-height: 300px; /* Opcional: limita la altura máxima si tu imagen es muy alta */
-        border-radius: 5px;
-    }
-
-}
-
-
-
-/* --- BOTÓN FLOTANTE DE WHATSAPP --- */
-
-.whatsapp-float {
-
-    position: fixed;
-
-    bottom: 30px;
-
-    right: 30px;
-
-    background-color: var(--gold); /* Usamos tu variable de oro */
-
-    color: #fff;
-
-    padding: 12px 20px;
-
-    border-radius: 50px; /* Bordes redondeados tipo cápsula */
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    text-decoration: none;
-
-    font-weight: bold;
-
-    font-size: 14px;
-
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-
-    z-index: 1000;
-
-    transition: all 0.3s ease;
-
-}
-
-
-
-.whatsapp-float i {
-
-    font-size: 22px;
-
-}
-
-
-
-.whatsapp-float:hover {
-
-    transform: translateY(-5px); /* Efecto de levitación */
-
-    background-color: #b8860b; /* Un dorado un poco más oscuro al pasar el mouse */
-
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-
-}
-
-
-
-/* En móviles muy pequeños, ocultamos el texto para que solo quede el icono redondo */
-
-@media (max-width: 480px) {
-
-    .whatsapp-float {
-
-        padding: 15px;
-
-        bottom: 20px;
-
-        right: 20px;
-
-    }
-
-    .whatsapp-float span {
-
-        display: none;
-
-    }
-
-}
-/* Ocultos por defecto (PC) */
-.slider-dots {
-    display: none;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.dot {
-    width: 10px;
-    height: 10px;
-    background-color: #555; /* Gris oscuro */
-    border-radius: 50%;
-    transition: all 0.3s ease;
-}
-
-.dot.active {
-    background-color: var(--gold); /* Tu dorado premium */
-    transform: scale(1.3);
-}
-
-/* Mostrar solo en móviles */
-@media (max-width: 768px) {
-    .slider-dots {
-        display: flex; /* Se mantienen visibles en móvil */
-        position: absolute; /* Se salen del flujo normal para poder fijarlos */
-        bottom: 20px; /* Se quedan a 20px del borde inferior de la sección */
-        left: 50%; /* Se mueven a la mitad de la pantalla */
-        transform: translateX(-50%); /* Se centran perfectamente sobre su propio eje */
-        z-index: 10; /* Asegura que queden por encima de las imágenes */
-        gap: 10px;
-        /* Ya no necesitamos el margin-top aquí */
-    }
-}
-.location-section {
-    padding: 80px 10%;
-    background-color: var(--soft-gray);
-    text-align: center;
-    color: var(--dark);
-}
-
-.location-content i.fa-location-dot {
-    font-size: 3rem;
-    margin-bottom: 20px;
-}
-
-.online-tag {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 5px 15px;
-    border: 1px solid var(--gold);
-    border-radius: 20px;
-    font-size: 0.9rem;
-    color: var(--gold);
-    font-weight: bold;
-}
-
-.delivery-info {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 30px;
-    font-weight: 600;
-}
-
-.delivery-info i {
-    margin-right: 8px;
-    color: var(--gold);
-}
-
-/* --- SECCIÓN UBICACIÓN MAPA DARK --- */
-.location-section {
-    padding: 80px 0; /* Quitamos padding lateral para que el mapa llegue a los bordes */
-    background-color: var(--dark); /* Fondo oscuro para continuidad */
-    text-align: center;
-}
-
-.location-section .section-header h2 {
-    color: white;
-}
-
-.map-container {
-    position: relative; /* Necesario para que el texto flote encima */
+.story-image {
     width: 100%;
-    height: 400px; /* Altura fija para el banner del mapa */
-    overflow: hidden;
-    margin-top: 40px;
-    border-top: 1px solid rgba(212, 175, 55, 0.3); /* Sutil línea dorada arriba */
-    border-bottom: 1px solid rgba(212, 175, 55, 0.3); /* Sutil línea dorada abajo */
+    height: 500px;
+    overflow: hidden; /* Esto es vital para que el zoom no se salga del cuadro */
+    border-radius: 5px;
 }
-
-/* 1. Preparamos la imagen para que el cambio sea suave */
-.map-image {
+.img-esencia {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: filter 0.5s ease, transform 0.5s ease; /* Esta es la clave del efecto */
+    transition: transform 0.5s ease; /* Suaviza el movimiento */
+}
+/* El efecto de zoom al poner el mouse */
+.story-image:hover .img-esencia {
+    transform: scale(1.08); /* Aumenta un 8% el tamaño */
 }
 
-/* 2. Aquí está lo que no encontrabas: El efecto al pasar el mouse o hacer clic */
-.map-container:hover .map-image {
-    filter: brightness(0.6) blur(5px); /* Se oscurece y se difumina */
-    transform: scale(1.05); /* Un pequeño zoom de ingeniería */
+/* SERVICIOS */
+.services-section {
+    padding: 100px 10% 60px;
+    text-align: center; /* Antes estaba en center */
+    position: relative;
+}
+/* Esta es la regla que no encontrabas, agrégala ahora: */
+.section-header h2 { 
+    font-family: var(--font-serif); 
+    font-size: 2.5rem; 
+    margin-bottom: 30px; /* Igualamos el margen de Nuestra Esencia */
+    color: var(--dark);
+}
+.underline { width: 60px; height: 3px; background: var(--gold); margin: 20px auto 50px; }
+.services-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.service-card { height: 400px; background: #222; display: flex; align-items: flex-end; padding: 30px; transition: 0.5s; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); }
+.service-card:hover { transform: scale(1.02); border-color: var(--gold); }
+.service-info { color: white; text-align: left; }
+.service-info h3 { font-size: 1.5rem; color: var(--gold); margin-bottom: 5px; }
+
+.card-cnc { background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.8)), url('assets/cnc.jpeg') center/cover no-repeat !important; }
+.card-proto { background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.8)), url('assets/prototipo.png') center/cover no-repeat !important; }
+.card-brand { background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.8)), url('assets/branding.png') center/cover no-repeat !important; }
+
+/* CONTACTO */
+.contact-section { padding: 100px 10%; background-color: #121212; color: white; text-align: center; }
+.contact-card h2 { font-family: var(--font-serif); font-size: 2.5rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 40px; }
+.contact-links p { margin: 15px 0; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+.contact-links i { color: var(--gold); margin-right: 15px; }
+/* Reemplaza la sección de enlaces de contacto por esta: */
+.contact-links a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Transición suave del color */
+    font-weight: 300;
 }
 
-/* Contenedor del texto sobre el mapa */
-.map-overlay {
-    position: absolute;
-    top: 5px; /* Lo posiciona a 30px del borde superior */
-    left: 50%;
-    color: white;
-    width: 80%;
-    z-index: 2;
-    transform: translateX(-50%); /* Solo lo centra horizontalmente */
-    pointer-events: none;
+.contact-links a:hover {
+    color: var(--gold) !important; /* El !important asegura que gane al color blanco */
 }
+.btn-whatsapp { display: inline-block; margin-top: 40px; padding: 15px 40px; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; text-transform: uppercase; font-size: 12px; font-weight: bold; letter-spacing: 2px; transition: 0.4s; }
+.btn-whatsapp:hover { background-color: var(--gold); color: #000; }
 
-.location-title {
-    font-family: var(--font-serif);
-    font-size: 2rem;
-    color: var(--gold);
-}
+/* UBICACIÓN */
+.location-section { padding: 80px 0; background-color: var(--dark); text-align: center; }
+.location-section h2 { color: white; font-family: var(--font-serif); font-size: 2.5rem; }
+.map-container { position: relative; width: 100%; height: 400px; overflow: hidden; margin-top: 40px; border-top: 1px solid rgba(212,175,55,0.3); border-bottom: 1px solid rgba(212,175,55,0.3); }
+.map-image { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; filter: brightness(0.8); }
+.map-container:hover .map-image { filter: brightness(0.6) blur(5px); transform: scale(1.05); }
+.map-overlay { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); color: white; width: 80%; z-index: 2; pointer-events: none; }
+.location-title { font-family: var(--font-serif); font-size: 2rem; color: var(--gold); margin-bottom: 0; }
+.location-subtitle { font-size: 1.1rem; margin-top: -5px; }
+.online-badge { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); background-color: rgba(0,0,0,0.8); border: 1px solid var(--gold); color: var(--gold); padding: 10px 25px; border-radius: 30px; font-weight: bold; z-index: 3; pointer-events: none; }
 
-.location-subtitle {
-    font-size: 1.1rem;
-    margin-bottom: 25px;
-}
+/* DOTS SLIDER */
+.slider-dots { display: none; justify-content: center; gap: 10px; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 10; }
+.dot { width: 10px; height: 10px; background-color: #555; border-radius: 50%; transition: 0.3s; }
+.dot.active { background-color: var(--gold); transform: scale(1.3); }
 
-/* La etiqueta de "Atención Online" */
-.online-badge {
-    position: absolute; /* La fijamos de forma absoluta */
-    bottom: 30px;       /* A 30px del borde inferior */
-    left: 50%;          /* Centrada horizontalmente */
-    transform: translateX(-50%); /* Ajuste fino del centrado */
-    
-    /* Estilos visuales (se mantienen) */
-    display: inline-block;
-    padding: 10px 25px;
-    background-color: rgba(0,0,0,0.8); /* Un poco más oscuro para contraste */
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    border-radius: 30px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    font-size: 0.9rem;
-    z-index: 3; /* Asegura que quede sobre el mapa */
-    transition: all 0.3s ease; /* Suaviza cualquier cambio */
-}
+/* WHATSAPP FLOAT */
+.whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: var(--gold); color: #fff; padding: 12px 20px; border-radius: 50px; display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: bold; font-size: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; transition: 0.3s; }
+.whatsapp-float:hover { transform: translateY(-5px); background-color: #b8860b; }
 
-/* 3. Posicionamos la etiqueta dorada en la parte inferior */
-.online-badge {
-    position: absolute;
-    bottom: 30px; /* La fijamos abajo */
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.8);
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    padding: 10px 20px;
-    border-radius: 25px;
-    font-weight: bold;
-    z-index: 10;
-    pointer-events: none; /* Para que no interfiera con el clic en el mapa */
-}
-
-/* Ajuste para móviles */
+/* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
-    .map-container {
-        height: 300px; /* Un poco más bajo en celular */
-    }
-  .location-subtitle {
-    font-size: 1.1rem;
-    margin-bottom: 5px; /* Reducimos drásticamente el margen */
+    .menu-toggle { display: block; color: var(--gold); }
+    .nav-links { position: fixed; top: 0; right: -100%; background: #000; width: 80%; height: 100vh; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s; }
+    .nav-links.active { right: 0 !important; }
+    .hero h1 { font-size: 2.5rem; }
+    .story-grid { grid-template-columns: 1fr !important; text-align: center; }
+    .story-image { height: auto !important; }
+    .services-gallery { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding: 20px 5%; gap: 15px; scrollbar-width: none; }
+    .services-gallery::-webkit-scrollbar { display: none; }
+    .service-card { min-width: 85vw; scroll-snap-align: center; }
+    .slider-dots { display: flex; }
+    .location-title { font-size: 1.5rem; }
+    .location-subtitle { font-size: 0.9rem; }
+    .map-container { height: 300px; }
 }
-    .map-overlay {
-        width: 95%; /* Más ancho para el texto en pantalla pequeña */
-    }
-}
 
-
-
-
-
+footer { padding: 50px; text-align: center; font-size: 12px; letter-spacing: 2px; color: #666; }
