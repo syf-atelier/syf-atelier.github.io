@@ -87,7 +87,7 @@ body { font-family: var(--font-main); color: var(--dark); background: var(--ligh
     font-family: var(--font-serif); 
     font-size: 2.5rem; 
     margin-bottom: 30px; /* Igualamos el margen de Nuestra Esencia */
-    color: var(--dark);
+    color: var(--white);
 }
 .underline { width: 60px; height: 3px; background: var(--gold); margin: 20px auto 50px; }
 .services-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }

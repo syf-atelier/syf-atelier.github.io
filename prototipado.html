@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototipado Técnico | S&F Atelier</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body style="background-color: #121212; color: white;">
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-brand" onclick="location.href='index.html'" style="cursor:pointer">
+                <img src="assets/logo principal.jpeg" alt="Logo">
+                <span>S&F ATELIER</span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu"><i class="fa-solid fa-bars"></i></div>
+            <ul class="nav-links" id="nav-list">
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#mision-vision">Nosotros</a></li>
+                <li><a href="index.html#servicios">Servicios</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+                <li><a href="index.html#ubicacion">Ubicación</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main style="padding-top: 120px;">
+        <section class="services-section">
+            <div class="section-header">
+                <h2 style="color: white;">Prototipado e Ingeniería</h2>
+                <div class="underline"></div>
+            </div>
+
+            <div class="story-grid">
+                <div class="story-text">
+                    <p>Especializados en la validación de diseños complejos. Transformamos modelos CAD en prototipos físicos funcionales que permiten evaluar ensambles, ergonomía y materiales.</p>
+                    <br>
+                    <ul style="list-style: none;">
+                        <li><i class="fa-solid fa-microchip" style="color:var(--gold)"></i> Maquetas técnicas de alta precisión.</li>
+                        <li><i class="fa-solid fa-layer-group" style="color:var(--gold)"></i> Pruebas de ensamble y tolerancias mecánicas.</li>
+                        <li><i class="fa-solid fa-compass-drafting" style="color:var(--gold)"></i> Optimización de piezas para producción masiva.</li>
+                    </ul>
+                    <a href="https://api.whatsapp.com/send/?phone=56935662568" class="btn-whatsapp">Validar mi diseño</a>
+                </div>
+                <div class="story-image">
+                    <img src="assets/prototipo.png" alt="Prototipado S&F" class="img-esencia">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
