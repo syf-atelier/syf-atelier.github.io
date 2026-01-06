@@ -139,11 +139,54 @@ body { font-family: var(--font-main); color: var(--dark); background: var(--ligh
 .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: var(--gold); color: #fff; padding: 12px 20px; border-radius: 50px; display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: bold; font-size: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; transition: 0.3s; }
 .whatsapp-float:hover { transform: translateY(-5px); background-color: #b8860b; }
 
-/* MOBILE RESPONSIVE */
+/* VERSION MOVIL */
 @media (max-width: 768px) {
-    .menu-toggle { display: block; color: var(--gold); }
-    .nav-links { position: fixed; top: 0; right: -100%; background: #000; width: 80%; height: 100vh; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s; }
-    .nav-links.active { right: 0 !important; }
+    /* 1. Ajuste del panel lateral */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%; 
+        background-color: #000000; 
+        width: 80%; 
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        
+        /* CAMBIO CLAVE: Alineamos al inicio (arriba) y no al centro */
+        justify-content: flex-start !important; 
+        align-items: center; 
+        
+        /* ESPACIO PARA LA X: Empujamos los links hacia abajo para que no toquen el botón */
+        padding-top: 100px; 
+        
+        gap: 30px; /* Espacio entre cada link */
+        transition: 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+        z-index: 1000;
+        box-shadow: -10px 0 20px rgba(0,0,0,0.5);
+    }
+
+    /* 2. Aseguramos que el botón X esté siempre ARRIBA de todo */
+    .menu-toggle {
+        display: block;
+        position: relative;
+        color: var(--gold);
+        z-index: 1100; /* Un nivel superior al fondo del menú (1000) */
+        font-size: 1.8rem;
+        cursor: pointer;
+    }
+
+    .nav-links.active {
+        right: 0 !important;
+    }
+
+    .nav-links a {
+        font-size: 1.2rem; /* Tamaño más cómodo para lectura vertical */
+        color: white;
+        letter-spacing: 2px;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
     .hero h1 { font-size: 2.5rem; }
     .story-grid { grid-template-columns: 1fr !important; text-align: center; }
     .story-image { height: auto !important; }
