@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diseño CNC | S&F Atelier</title>
     <link rel="stylesheet" href="style.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
 </head>
 <body style="background-color: #121212; color: white;">
 
@@ -47,9 +48,16 @@
                     </ul>
                     <a href="https://api.whatsapp.com/send/?phone=56935662568" class="btn-whatsapp">Cotizar este servicio</a>
                 </div>
-                <div class="story-image">
-                    <img src="assets/cnc.jpeg" alt="Router CNC S&F" class="img-esencia">
-                </div>
+                       <div class="story-image">
+             <model-viewer 
+                 src="assets/models/Cocina3d.glb" 
+                 ar 
+                 camera-controls 
+                 touch-action="pan-y" 
+                 shadow-intensity="1" 
+                 style="width: 100%; height: 500px; background-color: #121212; border: 1px solid var(--gold); border-radius: 8px;">
+             </model-viewer>
+            </div>
             </div>
         </section>
     </main>
