@@ -200,11 +200,3 @@ body { font-family: var(--font-main); color: var(--dark); background: var(--ligh
 }
 
 footer { padding: 50px; text-align: center; font-size: 12px; letter-spacing: 2px; color: #666; }
-
-
-/*new borrar en algun punto si es necesario jsjf */
-model-viewer {
-    border: 1px solid var(--gold); /* Borde dorado técnico */
-    border-radius: 8px;
-    --poster-color: transparent;
-}
