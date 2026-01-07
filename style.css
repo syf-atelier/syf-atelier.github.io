@@ -200,3 +200,75 @@ body { font-family: var(--font-main); color: var(--dark); background: var(--ligh
 }
 
 footer { padding: 50px; text-align: center; font-size: 12px; letter-spacing: 2px; color: #666; }
+/* --- INICIO DEL CSS DEL MENÚ DESPLEGABLE --- */
+
+/* Contenedor principal del botón y el menú */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    height: 100%; /* Asegura que el área de hover cubra toda la altura del nav */
+}
+
+/* Estilo del menú oculto (ESTADO INICIAL) */
+.dropdown-content {
+    /* En lugar de display: none, usamos esto para poder animar: */
+    visibility: hidden; /* No se ve ni recibe clics */
+    opacity: 0; /* Totalmente transparente */
+
+    /* Posición inicial un poco más abajo para el efecto de "subida" */
+    transform: translateY(15px);
+
+    position: absolute;
+    top: 100%; /* Se ubica justo debajo del botón "SERVICIOS" */
+    left: 0;
+    background-color: #121212; /* Fondo casi negro para contraste premium */
+    min-width: 240px; /* Un poco más ancho para que los textos respiren */
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.5); /* Sombra suave */
+    z-index: 1000;
+    border: 1px solid var(--gold); /* Borde dorado característico */
+    border-radius: 0 0 8px 8px; /* Bordes redondeados solo abajo */
+    padding: 10px 0;
+    list-style: none;
+
+    /* LA MAGIA: Define la transición suave de 0.3 segundos */
+    transition: all 0.3s ease-in-out;
+}
+
+/* MOSTRAR EL MENÚ AL PASAR EL MOUSE (ESTADO FINAL) */
+.dropdown:hover .dropdown-content {
+    /* display: block;  <- YA NO USAMOS ESTO */
+    visibility: visible;
+    opacity: 1; /* Se vuelve visible suavemente */
+    transform: translateY(0); /* Sube a su posición original */
+}
+
+/* Enlaces dentro del dropdown */
+.dropdown-content li a {
+    color: #e0e0e0; /* Texto gris claro */
+    padding: 12px 20px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s; /* Transición rápida para el hover del link */
+}
+
+/* Efecto hover en las opciones individuales */
+.dropdown-content li a:hover {
+    background-color: var(--gold); /* Fondo dorado al pasar el mouse */
+    color: #000; /* Texto negro para contraste */
+}
+
+/* Pequeña flecha al lado de "SERVICIOS" */
+.dropbtn i {
+    font-size: 0.7rem;
+    margin-left: 8px;
+    transition: transform 0.3s;
+}
+
+/* Gira la flecha cuando el menú está abierto */
+.dropdown:hover .dropbtn i {
+    transform: rotate(180deg);
+}
+
+/* --- FIN DEL CSS DEL MENÚ DESPLEGABLE --- */
