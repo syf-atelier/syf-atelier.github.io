@@ -344,7 +344,12 @@ body { font-family: var(--font-main); color: var(--dark); background: var(--ligh
         font-size: 0.95rem;
         color: #bbb;
     }
-
+    .dropdown-content li a:active, 
+    .dropdown-content li a:hover {
+    color: var(--gold) !important;
+    background-color: #222 !important; /* Un tono ligeramente más claro para resaltar el click */
+    transition: 0.1s; /* Respuesta rápida al tacto */
+    }
     /* Ubicación y Mapa */
     .location-title { font-size: 1.5rem; }
     .location-subtitle { font-size: 0.9rem; }
