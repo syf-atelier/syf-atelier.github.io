@@ -37,37 +37,51 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
-// 4. Lógica de "Doble Función" para el botón de Servicios (Dropdown)
-// El 'if (dropbtn)' evita que el código falle en páginas donde no hay dropdown
-if (dropbtn && dropdown) {
-    dropbtn.addEventListener('click', function(e) {
-        if (window.innerWidth <= 768) {
-            // Detectamos si el clic fue en el icono de la flecha
-            const isArrow = e.target.classList.contains('fa-chevron-down') || e.target.closest('i');
+// 4. Lógica MEJORADA para Múltiples Dropdowns (Servicios y Nosotros)
+const dropdowns = document.querySelectorAll('.dropdown');
 
-            if (isArrow) {
-                // Caso 1: Clic en la flecha -> Desplegar sub-opciones
-                e.preventDefault();
-                e.stopPropagation();
-                dropdown.classList.toggle('active');
-            } else {
-                // Caso 2: Clic en el texto -> Navegar y CERRAR menú
-                if (navList) navList.classList.remove('active');
-                const icon = mobileMenu ? mobileMenu.querySelector('i') : null;
-                if (icon) {
-                    icon.classList.add('fa-bars');
-                    icon.classList.remove('fa-xmark');
-                }
-                
-                // Redirección si estamos fuera del index
-                const isIndex = window.location.pathname.endsWith('index.html') || window.location.pathname === '/';
-                if (!isIndex) {
-                    window.location.href = 'index.html#servicios';
+dropdowns.forEach(dropdown => {
+    const btn = dropdown.querySelector('.dropbtn');
+    
+    if (btn) {
+        btn.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                // Detectamos si el clic fue en la flecha
+                const isArrow = e.target.classList.contains('fa-chevron-down') || e.target.closest('.fa-chevron-down');
+
+                if (isArrow) {
+                    // Caso 1: Clic en la flecha -> Desplegar/Cerrar ESTE menú
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Cierra otros menús abiertos para que no se amontonen
+                    dropdowns.forEach(d => {
+                        if (d !== dropdown) d.classList.remove('active');
+                    });
+
+                    dropdown.classList.toggle('active');
+                } else {
+                    // Caso 2: Clic en el texto -> Navegar y CERRAR menú
+                    if (navList) navList.classList.remove('active');
+                    const icon = mobileMenu ? mobileMenu.querySelector('i') : null;
+                    if (icon) {
+                        icon.classList.add('fa-bars');
+                        icon.classList.remove('fa-xmark');
+                    }
+                    
+                    // Permitir la navegación natural del enlace
                 }
             }
-        }
-    });
-}
+        });
+    }
+});
+
+// Cerrar dropdowns al hacer click fuera (Opcional pero recomendado para UX)
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.dropdown')) {
+        dropdowns.forEach(d => d.classList.remove('active'));
+    }
+});
 
 // 5. Lógica de la Galería (Slider Dots)
 const gallery = document.querySelector('.services-gallery');
