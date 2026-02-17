@@ -39,7 +39,7 @@ body { font-family: var(--font-main); color: var(--dark); background: var(--ligh
 /* --- SECCIÓN PUENTE (TÍTULO INGENIERÍA) --- */
 .engineering-intro {
     background-color: #ffffff;
-    padding: 60px 0 0px 0;
+    padding: 60px 0 0px 0; /* Padding base para PC */
     text-align: center;
     position: relative;
     z-index: 5;
@@ -153,19 +153,18 @@ body { font-family: var(--font-main); color: var(--dark); background: var(--ligh
     border-radius: 50%;
     background: rgba(255,255,255,0.3);
     transition: 0.3s;
-    cursor: pointer; /* ESTO ES LO NUEVO: Manito para hacer click */
+    cursor: pointer;
 }
 .h-dot.active {
     background: var(--gold);
     transform: scale(1.2);
 }
 
-/* --- BOTÓN SÓLIDO DORADO (CORREGIDO GLOBALMENTE) --- */
-/* Este bloque debe estar AQUÍ, fuera de los media queries */
+/* --- BOTÓN SÓLIDO DORADO --- */
 .btn-slider {
     display: inline-block;
     background-color: var(--gold);
-    color: #ffffff !important; /* Forzamos blanco para que no se vea morado */
+    color: #ffffff !important;
     padding: 15px 35px;
     margin-top: 25px;
     
@@ -197,7 +196,6 @@ body { font-family: var(--font-main); color: var(--dark); background: var(--ligh
 .btn-slider:hover i {
     transform: translateX(5px);
 }
-
 
 /* --- ESTILOS GENERALES Y UTILIDADES --- */
 .story-section { padding: 100px 10%; background: var(--soft-gray); }
@@ -272,6 +270,9 @@ body { font-family: var(--font-main); color: var(--dark); background: var(--ligh
 /* --- FOOTER GLOBAL --- */
 footer { padding: 50px; text-align: center; font-size: 12px; letter-spacing: 2px; color: #666; }
 
+/* --- UTILIDAD GLOBAL (Para forzar blanco) --- */
+.text-white h2 { color: #ffffff !important; }
+
 /* =========================================
    MEDIA QUERIES (MÓVIL)
    ========================================= */
@@ -286,9 +287,11 @@ footer { padding: 50px; text-align: center; font-size: 12px; letter-spacing: 2px
     /* HERO PORTADA */
     .hero h1 { font-size: 2.2rem; }
 
-    /* AJUSTE TÍTULO PUENTE EN MÓVIL */
-    .engineering-intro { padding: 40px 20px; }
-    .engineering-intro h2 { font-size: 2rem; }
+    /* AJUSTE TÍTULO PUENTE EN MÓVIL (CORREGIDO) */
+    .engineering-intro { 
+        padding: 40px 0 10px 0 !important; /* <--- AQUI ESTÁ EL CAMBIO CLAVE: Reduce espacio abajo */
+    }
+    .engineering-intro h2 { font-size: 2rem; margin-bottom: 10px; }
     .engineering-intro::after { display: none; }
 
     /* NUEVO HERO SLIDER (MÓVIL) */
