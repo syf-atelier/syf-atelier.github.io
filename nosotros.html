@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros | S&F Atelier</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+</head>
+<body style="background-color: #121212; color: white;">
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-brand" onclick="location.href='index.html'" style="cursor:pointer">
+                <img src="assets/logo principal.jpeg" alt="S&F Atelier Logo">
+                <span>S&F ATELIER</span>
+            </div>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <ul class="nav-links" id="nav-list">
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="nosotros.html" style="color: var(--gold);">Nosotros</a></li>
+                <li class="dropdown">
+                    <a href="index.html#servicios" class="dropbtn">SERVICIOS <i class="fa-solid fa-chevron-down"></i></a>
+                    <ul class="dropdown-content">
+                        <li><a href="cnc.html">Mecanizado CNC</a></li>
+                        <li><a href="prototipado.html">Prototipado e Ingeniería</a></li>
+                        <li><a href="branding.html">Branding y Señalética</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+                <li><a href="index.html#ubicacion">Ubicación</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main style="padding-top: 120px;">
+        <section class="services-section">
+            
+            <div class="section-header">
+                <h2 style="color: white;">Nuestra Identidad</h2>
+                <div class="underline"></div>
+            </div>
+
+            <div class="story-grid">
+                <div class="story-text">
+                    <p>En S&F Atelier, nacemos de la convergencia entre la ingeniería civil electrónica y el diseño industrial. Somos una respuesta técnica a la necesidad de mobiliario de precisión en la V Región.</p>
+                    <br>
+                    
+                    <div class="mision-item" style="margin-bottom: 30px;">
+                        <h3>Misión</h3>
+                        <p>Transformar ideas complejas en realidades tangibles mediante diseño de precisión e innovación técnica. Nos dedicamos a aplicar estándares de ingeniería en la fabricación de mobiliario, asegurando funcionalidad y estética en cada proyecto.</p>
+                    </div>
+
+                    <div class="vision-item">
+                        <h3>Visión</h3>
+                        <p>Ser el referente regional en diseño y prototipado técnico, uniendo la ingeniería con la estética artesanal. Aspiramos a elevar el estándar de la manufactura local mediante el uso de tecnologías CNC y modelado paramétrico.</p>
+                    </div>
+
+                    <a href="index.html" class="btn-whatsapp" style="margin-top: 40px; text-align: center; display: inline-block;">
+                        <i class="fa-solid fa-arrow-left"></i> Volver al Inicio
+                    </a>
+                </div>
+
+                <div class="story-image">
+                    <img src="assets/Nosotros.png" alt="Equipo S&F Atelier" class="img-esencia">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Script del menú móvil (mismo que en index)
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+        if (mobileMenu && navList) {
+            mobileMenu.addEventListener('click', () => {
+                navList.classList.toggle('active');
+                const icon = mobileMenu.querySelector('i');
+                if (icon) {
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-xmark');
+                }
+            });
+        }
+    </script>
+
+    <footer>
+        <p>&copy; 2026 S&F ATELIER. Excelencia en Diseño Técnico.</p>
+    </footer>
+
+</body>
+</html>
