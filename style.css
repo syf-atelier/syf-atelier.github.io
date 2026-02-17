@@ -11,7 +11,7 @@
 html { scroll-behavior: smooth; }
 body { font-family: var(--font-main); color: var(--dark); background: var(--light); line-height: 1.7; overflow-x: hidden; }
 
-/* NAVBAR */
+/* --- NAVBAR --- */
 .navbar { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 20px 50px; background: #000000; border-bottom: 1px solid rgba(255,255,255,0.1); }
 .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; }
 .logo-brand { display: flex; align-items: center; font-weight: 700; letter-spacing: 2px; }
@@ -22,73 +22,196 @@ body { font-family: var(--font-main); color: var(--dark); background: var(--ligh
 .nav-links a:hover { color: var(--gold); }
 .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
 
-/* HERO */
+/* --- HERO PRINCIPAL (PORTADA) --- */
 .hero {
     height: 100vh;
-    /* CAMBIO 1: Aumentamos la opacidad de 0.5 a 0.7 para oscurecer más el fondo */
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('assets/hero-bg.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.gold-text {
-    color: var(--gold) !important; /* Usamos !important para asegurar que gane sobre el blanco */
-}
-.hero-content {
-    text-align: center;
-    color: white; /* El resto del texto será blanco */
-    padding: 0 20px;
-}
+.gold-text { color: var(--gold) !important; }
+.hero-content { text-align: center; color: white; padding: 0 20px; }
 .hero h1 { font-family: var(--font-serif); font-size: 4rem; margin-bottom: 20px; }
 .btn-gold { display: inline-block; padding: 15px 40px; background: var(--gold); color: white; text-decoration: none; font-weight: bold; border-radius: 2px; transition: 0.4s; margin-top: 30px; }
 .btn-gold:hover { background: #b8860b; transform: translateY(-3px); }
 
-/* NOSOTROS */
+/* --- SECCIÓN PUENTE (TÍTULO INGENIERÍA) --- */
+.engineering-intro {
+    background-color: #ffffff;
+    padding: 60px 0 0px 0;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+}
+
+.engineering-intro h2 {
+    color: var(--dark);
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+
+/* --- NUEVO HERO SLIDER (SECCIÓN MISIÓN/VISIÓN) --- */
+#mision-vision-hero {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: #121212;
+}
+
+.hero-slider-wrapper {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    height: 650px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.hero-slider-wrapper::-webkit-scrollbar { display: none; }
+
+.hero-slide {
+    flex: 0 0 100%;
+    height: 100%;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    scroll-snap-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.slide-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.1) 100%);
+    z-index: 1;
+}
+
+/* CAJA DE TEXTO (GLASSMORPHISM) */
+.slide-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    max-width: 600px;
+    background: rgba(0, 0, 0, 0.4); 
+    backdrop-filter: blur(5px);
+    border-left: 5px solid var(--gold);
+    padding: 40px; 
+    margin-left: 10%;
+    border-radius: 0 8px 8px 0;
+}
+
+.slide-content h4 {
+    color: var(--gold);
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.slide-content h2 {
+    font-size: 3.5rem;
+    font-family: var(--font-serif);
+    margin-bottom: 20px;
+    line-height: 1.1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.gold-line-short {
+    width: 60px;
+    height: 4px;
+    background-color: var(--gold);
+    margin-bottom: 25px;
+}
+
+.slide-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #f0f0f0;
+    font-weight: 300;
+}
+
+/* Indicadores del Hero */
+.hero-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 3;
+}
+
+.h-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transition: 0.3s;
+    cursor: pointer; /* ESTO ES LO NUEVO: Manito para hacer click */
+}
+.h-dot.active {
+    background: var(--gold);
+    transform: scale(1.2);
+}
+
+/* --- BOTÓN SÓLIDO DORADO (CORREGIDO GLOBALMENTE) --- */
+/* Este bloque debe estar AQUÍ, fuera de los media queries */
+.btn-slider {
+    display: inline-block;
+    background-color: var(--gold);
+    color: #ffffff !important; /* Forzamos blanco para que no se vea morado */
+    padding: 15px 35px;
+    margin-top: 25px;
+    
+    font-family: var(--font-main);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 2px;
+    
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.btn-slider:hover {
+    background-color: #b8860b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    color: white !important;
+}
+
+.btn-slider i {
+    margin-left: 10px;
+    transition: transform 0.3s;
+}
+
+.btn-slider:hover i {
+    transform: translateX(5px);
+}
+
+
+/* --- ESTILOS GENERALES Y UTILIDADES --- */
 .story-section { padding: 100px 10%; background: var(--soft-gray); }
 .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 .story-text h2 { font-family: var(--font-serif); font-size: 2.5rem; margin-bottom: 30px; }
-/* Ajuste de márgenes para claridad técnica */
-.mision-item {
-    margin-bottom: 50px; /* Aumentamos la separación */
-}
+.mision-item { margin-bottom: 50px; }
+.vision-item h3, .mision-item h3 { color: var(--gold); margin-bottom: 15px; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
+.story-image { width: 100%; height: 500px; overflow: hidden; border-radius: 5px; }
+.img-esencia { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.story-image:hover .img-esencia { transform: scale(1.08); }
 
-.vision-item h3, .mision-item h3 {
-    color: var(--gold);
-    margin-bottom: 15px; /* Un poco más de espacio bajo el título dorado */
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-.story-image {
-    width: 100%;
-    height: 500px;
-    overflow: hidden; /* Esto es vital para que el zoom no se salga del cuadro */
-    border-radius: 5px;
-}
-.img-esencia {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease; /* Suaviza el movimiento */
-}
-/* El efecto de zoom al poner el mouse */
-.story-image:hover .img-esencia {
-    transform: scale(1.08); /* Aumenta un 8% el tamaño */
-}
-
-/* SERVICIOS */
-.services-section {
-    padding: 100px 10% 60px;
-    text-align: center; /* Antes estaba en center */
-    position: relative;
-}
-/* Esta es la regla que no encontrabas, agrégala ahora: */
-.section-header h2 { 
-    font-family: var(--font-serif); 
-    font-size: 2.5rem; 
-    margin-bottom: 30px; /* Igualamos el margen de Nuestra Esencia */
-    color: var(--white);
-}
+/* --- SERVICIOS --- */
+.services-section { padding: 100px 10% 60px; text-align: center; position: relative; }
+.section-header h2 { font-family: var(--font-serif); font-size: 2.5rem; margin-bottom: 30px; color: var(--dark); }
 .underline { width: 60px; height: 3px; background: var(--gold); margin: 20px auto 50px; }
 .services-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .service-card { height: 400px; background: #222; display: flex; align-items: flex-end; padding: 30px; transition: 0.5s; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); }
@@ -96,30 +219,27 @@ body { font-family: var(--font-main); color: var(--dark); background: var(--ligh
 .service-info { color: white; text-align: left; }
 .service-info h3 { font-size: 1.5rem; color: var(--gold); margin-bottom: 5px; }
 
+/* Imágenes de fondo Servicios */
 .card-cnc { background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.8)), url('assets/cnc.jpeg') center/cover no-repeat !important; }
 .card-proto { background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.8)), url('assets/prototipo.png') center/cover no-repeat !important; }
 .card-brand { background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.8)), url('assets/branding.png') center/cover no-repeat !important; }
 
-/* CONTACTO */
+/* Slider Dots (Servicios) */
+.slider-dots { display: none; justify-content: center; gap: 10px; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 10; }
+.dot { width: 10px; height: 10px; background-color: #555; border-radius: 50%; transition: 0.3s; }
+.dot.active { background-color: var(--gold); transform: scale(1.3); }
+
+/* --- CONTACTO --- */
 .contact-section { padding: 100px 10%; background-color: #121212; color: white; text-align: center; }
 .contact-card h2 { font-family: var(--font-serif); font-size: 2.5rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 40px; }
 .contact-links p { margin: 15px 0; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
 .contact-links i { color: var(--gold); margin-right: 15px; }
-/* Reemplaza la sección de enlaces de contacto por esta: */
-.contact-links a {
-    color: #ffffff;
-    text-decoration: none;
-    transition: color 0.3s ease; /* Transición suave del color */
-    font-weight: 300;
-}
-
-.contact-links a:hover {
-    color: var(--gold) !important; /* El !important asegura que gane al color blanco */
-}
+.contact-links a { color: #ffffff; text-decoration: none; transition: color 0.3s ease; font-weight: 300; }
+.contact-links a:hover { color: var(--gold) !important; }
 .btn-whatsapp { display: inline-block; margin-top: 40px; padding: 15px 40px; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; text-transform: uppercase; font-size: 12px; font-weight: bold; letter-spacing: 2px; transition: 0.4s; }
 .btn-whatsapp:hover { background-color: var(--gold); color: #000; }
 
-/* UBICACIÓN */
+/* --- UBICACIÓN --- */
 .location-section { padding: 80px 0; background-color: var(--dark); text-align: center; }
 .location-section h2 { color: white; font-family: var(--font-serif); font-size: 2.5rem; }
 .map-container { position: relative; width: 100%; height: 400px; overflow: hidden; margin-top: 40px; border-top: 1px solid rgba(212,175,55,0.3); border-bottom: 1px solid rgba(212,175,55,0.3); }
@@ -130,259 +250,95 @@ body { font-family: var(--font-main); color: var(--dark); background: var(--ligh
 .location-subtitle { font-size: 1.1rem; margin-top: -5px; }
 .online-badge { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); background-color: rgba(0,0,0,0.8); border: 1px solid var(--gold); color: var(--gold); padding: 10px 25px; border-radius: 30px; font-weight: bold; z-index: 3; pointer-events: none; }
 
-/* DOTS SLIDER */
-.slider-dots { display: none; justify-content: center; gap: 10px; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 10; }
-.dot { width: 10px; height: 10px; background-color: #555; border-radius: 50%; transition: 0.3s; }
-.dot.active { background-color: var(--gold); transform: scale(1.3); }
-
-/* WHATSAPP FLOAT */
+/* --- ELEMENTOS FLOTANTES --- */
 .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: var(--gold); color: #fff; padding: 12px 20px; border-radius: 50px; display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: bold; font-size: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; transition: 0.3s; }
 .whatsapp-float:hover { transform: translateY(-5px); background-color: #b8860b; }
 
-/* --- INICIO DEL CSS DEL MENÚ DESPLEGABLE --- */
+/* --- DROPDOWN MENU --- */
+.dropdown { position: relative; display: inline-block; height: 100%; }
+.dropdown-content { visibility: hidden; opacity: 0; transform: translateY(15px); position: absolute; top: 100%; left: 0; background-color: #121212; min-width: 240px; box-shadow: 0px 10px 20px rgba(0,0,0,0.5); z-index: 1000; border: 1px solid var(--gold); border-radius: 0 0 8px 8px; padding: 10px 0; list-style: none; transition: all 0.3s ease-in-out; }
+.dropdown:hover .dropdown-content { visibility: visible; opacity: 1; transform: translateY(0); }
+.dropdown-content li a { color: #e0e0e0; padding: 12px 20px; text-decoration: none; display: block; font-size: 0.95rem; font-weight: 500; transition: background-color 0.2s, color 0.2s; }
+.dropdown-content li a:hover { background-color: var(--gold); color: #000; }
+.dropbtn i { font-size: 0.7rem; margin-left: 8px; transition: transform 0.3s; }
+.dropdown:hover .dropbtn i { transform: rotate(180deg); }
 
-/* Contenedor principal del botón y el menú */
-.dropdown {
-    position: relative;
-    display: inline-block;
-    height: 100%; /* Asegura que el área de hover cubra toda la altura del nav */
-}
+/* --- ESTILOS PÁGINA "NOSOTROS" --- */
+.header-nosotros { background-color: #2c3e50; color: white; padding: 3rem 1rem; text-align: center; }
+.container-texto { max-width: 800px; margin: 0 auto; padding: 2rem; line-height: 1.8; }
+.mision-vision-box { background: #f8f9fa; border-left: 5px solid #2c3e50; padding: 2rem; margin-bottom: 2rem; border-radius: 4px; }
+.btn-volver { display: inline-block; margin-top: 2rem; text-decoration: none; color: #2c3e50; font-weight: bold; }
 
-/* Estilo del menú oculto (ESTADO INICIAL) */
-.dropdown-content {
-    /* En lugar de display: none, usamos esto para poder animar: */
-    visibility: hidden; /* No se ve ni recibe clics */
-    opacity: 0; /* Totalmente transparente */
+/* --- FOOTER GLOBAL --- */
+footer { padding: 50px; text-align: center; font-size: 12px; letter-spacing: 2px; color: #666; }
 
-    /* Posición inicial un poco más abajo para el efecto de "subida" */
-    transform: translateY(15px);
-
-    position: absolute;
-    top: 100%; /* Se ubica justo debajo del botón "SERVICIOS" */
-    left: 0;
-    background-color: #121212; /* Fondo casi negro para contraste premium */
-    min-width: 240px; /* Un poco más ancho para que los textos respiren */
-    box-shadow: 0px 10px 20px rgba(0,0,0,0.5); /* Sombra suave */
-    z-index: 1000;
-    border: 1px solid var(--gold); /* Borde dorado característico */
-    border-radius: 0 0 8px 8px; /* Bordes redondeados solo abajo */
-    padding: 10px 0;
-    list-style: none;
-
-    /* LA MAGIA: Define la transición suave de 0.3 segundos */
-    transition: all 0.3s ease-in-out;
-}
-
-/* MOSTRAR EL MENÚ AL PASAR EL MOUSE (ESTADO FINAL) */
-.dropdown:hover .dropdown-content {
-    /* display: block;  <- YA NO USAMOS ESTO */
-    visibility: visible;
-    opacity: 1; /* Se vuelve visible suavemente */
-    transform: translateY(0); /* Sube a su posición original */
-}
-
-/* Enlaces dentro del dropdown */
-.dropdown-content li a {
-    color: #e0e0e0; /* Texto gris claro */
-    padding: 12px 20px;
-    text-decoration: none;
-    display: block;
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: background-color 0.2s, color 0.2s; /* Transición rápida para el hover del link */
-}
-
-/* Efecto hover en las opciones individuales */
-.dropdown-content li a:hover {
-    background-color: var(--gold); /* Fondo dorado al pasar el mouse */
-    color: #000; /* Texto negro para contraste */
-}
-
-/* Pequeña flecha al lado de "SERVICIOS" */
-.dropbtn i {
-    font-size: 0.7rem;
-    margin-left: 8px;
-    transition: transform 0.3s;
-}
-
-/* Gira la flecha cuando el menú está abierto */
-.dropdown:hover .dropbtn i {
-    transform: rotate(180deg);
-}
-
-/* --- FIN DEL CSS DEL MENÚ DESPLEGABLE --- */
-
-/* VERSION MOVIL */
+/* =========================================
+   MEDIA QUERIES (MÓVIL)
+   ========================================= */
 @media (max-width: 768px) {
-    /* 1. Ajuste del panel lateral (Menú hamburguesa) */
-    .nav-links {
-    position: fixed;
-    top: 0;
-    right: -100%; 
-    background-color: #000000; 
-    width: 80%; 
-    height: 100vh;
-    
-    /* RESET DE DISTRIBUCIÓN VERTICAL */
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: flex-start !important; /* Empuja todo hacia arriba */
-    align-items: center !important; 
-    
-    padding-top: 100px !important; /* Espacio para la 'X' */
-    gap: 10px !important; /* Espacio corto y constante entre cada link */
-    
-    transition: 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-    z-index: 1000;
-    overflow-y: auto; 
-}
+    /* NAVBAR */
+    .nav-links { position: fixed; top: 0; right: -100%; background-color: #000000; width: 80%; height: 100vh; display: flex !important; flex-direction: column !important; justify-content: flex-start !important; align-items: center !important; padding-top: 100px !important; gap: 10px !important; transition: 0.5s cubic-bezier(0.77,0.2,0.05,1.0); z-index: 1000; overflow-y: auto; }
+    .nav-links li { width: 100%; height: auto !important; margin: 0 !important; display: block; }
+    .nav-links.active { right: 0 !important; }
+    .nav-links a { display: block; font-size: 1.1rem; color: white; letter-spacing: 2px; width: 100%; text-align: center; padding: 15px 0; text-decoration: none; }
+    .menu-toggle { display: block; position: relative; color: var(--gold); z-index: 1100; font-size: 1.8rem; cursor: pointer; }
 
-    /* Reset de los items de la lista para evitar saltos de espacio */
-    .nav-links li {
-    width: 100%;
-    height: auto !important; /* Evita que los items intenten crecer */
-    margin: 0 !important;   /* Elimina cualquier margen que los separe */
-    display: block;
-}
-
-    .nav-links.active {
-        right: 0 !important;
-    }
-
-    /* Estilo de los enlaces principales */
-    .nav-links a {
-        display: block;
-        font-size: 1.1rem;
-        color: white;
-        letter-spacing: 2px;
-        width: 100%;
-        text-align: center;
-        padding: 15px 0;
-        text-decoration: none;
-    }
-
-    /* 2. Botón de la Hamburguesa / X */
-    .menu-toggle {
-        display: block;
-        position: relative;
-        color: var(--gold);
-        z-index: 1100; 
-        font-size: 1.8rem;
-        cursor: pointer;
-    }
-
-    /* 3. Ajustes de HERO y Secciones para Móvil */
+    /* HERO PORTADA */
     .hero h1 { font-size: 2.2rem; }
+
+    /* AJUSTE TÍTULO PUENTE EN MÓVIL */
+    .engineering-intro { padding: 40px 20px; }
+    .engineering-intro h2 { font-size: 2rem; }
+    .engineering-intro::after { display: none; }
+
+    /* NUEVO HERO SLIDER (MÓVIL) */
+    .hero-slider-wrapper { height: 500px; }
+    .hero-slide { justify-content: center; align-items: center; }
+    .slide-overlay { background: rgba(0,0,0,0.7); }
+
+    /* ESTILOS DE LA CAJA DE TEXTO EN MÓVIL */
+    .slide-content {
+        background: transparent;
+        backdrop-filter: none;
+        border: none;
+        padding: 0 20px;
+        margin-left: 0;
+        text-align: center;
+        max-width: 100%;
+    }
+    
+    .slide-content h2 { font-size: 2.2rem; text-align: center; text-shadow: none; }
+    .slide-content h4, .slide-content p { text-align: center; }
+    .gold-line-short { margin: 0 auto 20px auto; }
+
+    /* AJUSTE DEL BOTÓN EN MÓVIL */
+    .btn-slider {
+        margin-top: 20px;
+        padding: 12px 30px;
+        font-size: 0.8rem;
+    }
+
+    /* ESTILOS GENERALES MÓVIL */
     .story-grid { grid-template-columns: 1fr !important; text-align: center; gap: 40px; }
     .story-image { height: 300px !important; }
     
-    /* Galería de servicios (Slider) */
-    .services-gallery { 
-        display: flex; 
-        overflow-x: auto; 
-        scroll-snap-type: x mandatory; 
-        padding: 20px 5%; 
-        gap: 15px; 
-        scrollbar-width: none; 
-    }
+    /* SERVICIOS SLIDER MÓVIL */
+    .services-gallery { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding: 20px 5%; gap: 15px; scrollbar-width: none; }
     .services-gallery::-webkit-scrollbar { display: none; }
     .service-card { min-width: 85vw; scroll-snap-align: center; height: 350px; }
-    
     .slider-dots { display: flex; }
 
-    /* 4. AJUSTE DE PRECISIÓN: DROPDOWN CENTRADO */
-    .dropdown {
-        width: 100%;
-        display: block;
-    }
+    /* DROPDOWN MENU MÓVIL */
+    .dropdown { width: 100%; display: block; }
+    .dropbtn { display: block !important; width: 100%; text-align: center; position: relative; padding: 15px 0 !important; }
+    .dropbtn i { position: absolute; right: 25px; top: 50%; transform: translateY(-50%); font-size: 0.9rem; padding: 10px; color: var(--gold); transition: 0.3s; }
+    .dropdown-content { position: static; display: none; visibility: visible; opacity: 1; transform: none; width: 100%; background-color: #121212; padding: 0; border: none; box-shadow: none; }
+    .dropdown.active .dropdown-content { display: block; }
+    .dropdown-content li a { text-align: center; background-color: #1a1a1a; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 0 !important; font-size: 0.95rem; color: #bbb; }
+    .dropdown-content li a:active, .dropdown-content li a:hover { color: var(--gold) !important; background-color: #222 !important; transition: 0.1s; }
 
-    .dropbtn {
-        display: block !important; 
-        width: 100%;
-        text-align: center;
-        position: relative; /* Para que la flecha flote respecto a este botón */
-        padding: 15px 0 !important;
-    }
-
-    /* Flecha dorada a la derecha (no afecta el centrado del texto) */
-    .dropbtn i {
-        position: absolute;
-        right: 25px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 0.9rem;
-        padding: 10px;
-        color: var(--gold);
-        transition: 0.3s;
-    }
-
-    /* Menú de sub-opciones (Acordeón) */
-    .dropdown-content {
-        position: static; /* Empuja los elementos de abajo hacia abajo */
-        display: none;    
-        visibility: visible; 
-        opacity: 1;
-        transform: none; 
-        width: 100%;
-        background-color: #121212;
-        padding: 0;
-        border: none;
-        box-shadow: none;
-    }
-
-    /* Cuando se activa el dropdown */
-    .dropdown.active .dropdown-content {
-        display: block; 
-    }
-
-    /* Enlaces internos de servicios */
-    .dropdown-content li a {
-        text-align: center;
-        background-color: #1a1a1a;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
-        padding: 12px 0 !important;
-        font-size: 0.95rem;
-        color: #bbb;
-    }
-    .dropdown-content li a:active, 
-    .dropdown-content li a:hover {
-    color: var(--gold) !important;
-    background-color: #222 !important; /* Un tono ligeramente más claro para resaltar el click */
-    transition: 0.1s; /* Respuesta rápida al tacto */
-    }
-    /* Ubicación y Mapa */
+    /* UBICACIÓN */
     .location-title { font-size: 1.5rem; }
     .location-subtitle { font-size: 0.9rem; }
     .map-container { height: 250px; }
-
-     /* Un poco de estilo extra para la página Nosotros */
-        .header-nosotros {
-            background-color: #2c3e50;
-            color: white;
-            padding: 3rem 1rem;
-            text-align: center;
-        }
-        .container-texto {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-            line-height: 1.8;
-        }
-        .mision-vision-box {
-            background: #f8f9fa;
-            border-left: 5px solid #2c3e50;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 4px;
-        }
-        .btn-volver {
-            display: inline-block;
-            margin-top: 2rem;
-            text-decoration: none;
-            color: #2c3e50;
-            font-weight: bold;
-        }
-
 }
-
-footer { padding: 50px; text-align: center; font-size: 12px; letter-spacing: 2px; color: #666; }
