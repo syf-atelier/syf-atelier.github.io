@@ -7,6 +7,112 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <style>
+        /* --- CSS EXCLUSIVO PARA LA SECCIÓN DE PROCESO --- */
+        .method-section {
+            padding: 80px 10%;
+            background-color: #0a0a0a; 
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            text-align: center;
+        }
+        
+        /* ESTILO DESKTOP (PC) */
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .method-card {
+            background: rgba(255,255,255,0.03);
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+            position: relative;
+            border-radius: 4px;
+            text-align: left;
+        }
+        
+        .method-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.05);
+        }
+        
+        .step-number {
+            font-size: 4rem;
+            font-family: var(--font-serif);
+            color: rgba(212, 175, 55, 0.15);
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-weight: 700;
+            pointer-events: none;
+        }
+        
+        .method-card h3 {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative; z-index: 2;
+        }
+        
+        .method-card p {
+            font-size: 0.95rem;
+            color: #ccc;
+            line-height: 1.6;
+            position: relative; z-index: 2;
+        }
+
+        /* PUNTITOS (DOTS) - Ocultos por defecto en PC */
+        .mobile-dots {
+            display: none; 
+            justify-content: center;
+            gap: 12px;
+            margin-top: 30px;
+        }
+        .m-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #333;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+        .m-dot.active {
+            background-color: var(--gold);
+            transform: scale(1.3);
+        }
+
+        /* --- ESTILO MÓVIL (SLIDER) --- */
+        @media (max-width: 768px) {
+            .method-section { padding: 60px 0; }
+            .method-section .section-header { padding: 0 20px; }
+
+            .method-grid {
+                display: flex; 
+                overflow-x: auto; 
+                scroll-snap-type: x mandatory; 
+                gap: 15px;
+                padding: 20px 5%; 
+                margin-top: 30px;
+                scrollbar-width: none; 
+            }
+            .method-grid::-webkit-scrollbar { display: none; }
+
+            .method-card {
+                min-width: 85vw; 
+                scroll-snap-align: center; 
+                background: rgba(255,255,255,0.05); 
+            }
+
+            /* Mostrar los puntitos solo en móvil */
+            .mobile-dots { display: flex; }
+        }
+    </style>
 </head>
 <body style="background-color: #121212; color: white;">
 
@@ -22,7 +128,7 @@
             </div>
 
             <ul class="nav-links" id="nav-list">
-            <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#inicio">Inicio</a></li>
                  <li class="dropdown">
                  <a href="index.html#mision-vision" class="dropbtn">NOSOTROS <i class="fa-solid fa-chevron-down"></i></a>
                  <ul class="dropdown-content">
@@ -44,8 +150,8 @@
     </nav>
 
     <main style="padding-top: 120px;">
+        
         <section class="services-section">
-            
             <div class="section-header">
                 <h2 style="color: white;">Nuestra Identidad</h2>
                 <div class="underline"></div>
@@ -65,10 +171,6 @@
                         <h3>Visión</h3>
                         <p>Ser el referente regional en diseño y prototipado técnico, uniendo la ingeniería con la estética artesanal. Aspiramos a elevar el estándar de la manufactura local mediante el uso de tecnologías CNC y modelado paramétrico.</p>
                     </div>
-
-                    <a href="index.html" class="btn-whatsapp" style="margin-top: 40px; text-align: center; display: inline-block;">
-                        <i class="fa-solid fa-arrow-left"></i> Volver al Inicio
-                    </a>
                 </div>
 
                 <div class="story-image">
@@ -76,28 +178,131 @@
                 </div>
             </div>
         </section>
+
+        <section class="method-section">
+            <div class="section-header">
+                <h2 style="color: white;">Nuestro Proceso</h2>
+                <div class="underline"></div>
+                <p style="text-align: center; color: #999; max-width: 600px; margin: 0 auto;">
+                    Ingeniería aplicada a cada etapa del proyecto.
+                </p>
+            </div>
+
+            <div class="method-grid" id="methodSlider">
+                <div class="method-card">
+                    <span class="step-number">01</span>
+                    <h3>Diseño Paramétrico</h3>
+                    <p>No dibujamos, programamos. Utilizamos software CAD avanzado para modelar cada pieza en 3D, anticipando uniones y resistencias antes de cortar.</p>
+                </div>
+
+                <div class="method-card">
+                    <span class="step-number">02</span>
+                    <h3>Simulación & Nesting</h3>
+                    <p>Optimizamos el material digitalmente. Simulamos las rutas de corte (CAM) para asegurar que el aprovechamiento de la placa sea máximo.</p>
+                </div>
+
+                <div class="method-card">
+                    <span class="step-number">03</span>
+                    <h3>Manufactura CNC</h3>
+                    <p>Ejecución robótica. Nuestro Router CNC interpreta el código con una tolerancia de 0.1mm, entregando piezas listas para un ensamble perfecto.</p>
+                </div>
+            </div>
+
+            <div class="mobile-dots">
+                <div class="m-dot active"></div>
+                <div class="m-dot"></div>
+                <div class="m-dot"></div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="index.html#contacto" class="btn-slider">
+                    COTIZAR MI PROYECTO <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <br><br>
+                <a href="index.html" style="color: #666; text-decoration: none; font-size: 0.9rem; transition: 0.3s;">
+                    <i class="fa-solid fa-arrow-left"></i> Volver al Inicio
+                </a>
+            </div>
+        </section>
+
     </main>
 
     <script src="script.js"></script>
 
-        <script>
-        // Script del menú móvil (mismo que en index)
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navList = document.getElementById('nav-list');
-        if (mobileMenu && navList) {
-            mobileMenu.addEventListener('click', () => {
-                navList.classList.toggle('active');
-                const icon = mobileMenu.querySelector('i');
-                if (icon) {
-                    icon.classList.toggle('fa-bars');
-                    icon.classList.toggle('fa-xmark');
-                }
+    <script>
+        const slider = document.getElementById('methodSlider');
+        const dots = document.querySelectorAll('.m-dot');
+
+        if(slider && dots.length > 0) {
+            slider.addEventListener('scroll', () => {
+                const scrollLeft = slider.scrollLeft;
+                const cardWidth = slider.offsetWidth * 0.85; // Aproximado al ancho de tarjeta
+                
+                // Calcular en qué tarjeta estamos (0, 1 o 2)
+                const index = Math.round(scrollLeft / cardWidth);
+
+                // Actualizar clase active
+                dots.forEach((dot, i) => {
+                    if (i === index) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
             });
         }
-        </script>
+    </script>
 
-    <footer>
-        <p>&copy; 2026 S&F ATELIER. Excelencia en Diseño Técnico.</p>
+        <footer class="main-footer">
+        <div class="footer-container">
+            
+            <div class="footer-col brand-col">
+                <div class="footer-logo">
+                    <img src="assets/logo principal.jpeg" alt="Logo S&F">
+                    <span>S&F ATELIER</span>
+                </div>
+                <p>Ingeniería aplicada al diseño. Transformamos materiales en soluciones de precisión para la V Región.</p>
+            </div>
+
+            <div class="footer-col links-col">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="nosotros.html">Nosotros</a></li>
+                    <li><a href="index.html#servicios">Servicios</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact-col">
+                <h4>Contacto</h4>
+                <ul class="contact-list">
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <a href="https://goo.gl/maps/tudireccion" target="_blank">Viña del mar, V Región, Chile</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        <a href="mailto:syf.atelier@gmail.com">syf.atelier@gmail.com</a>
+                    </li>
+                    <li>
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <a href="https://wa.me/56935662568" target="_blank">+56 9 3566 2568</a>
+                    </li>
+                </ul>
+                
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/muebleria_atelier?igsh=YW12eWloY3o2OG92" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@syf.atelier?_r=1&_t=ZS-940qbdZlpg2" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://www.facebook.com/share/1FxPm69P98/?mibextid=wwXIfr" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 S&F ATELIER. Todos los derechos reservados.</p>
+        </div>
     </footer>
 
 </body>
