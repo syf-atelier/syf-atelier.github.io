@@ -168,3 +168,28 @@ if (heroContainer) {
 
 // Iniciar el automático
 startTimer();
+
+
+// ======================================================
+// 6. ANIMACIONES AL HACER SCROLL (Intersection Observer)
+// ======================================================
+document.addEventListener("DOMContentLoaded", function() {
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            // Si el elemento es visible en la pantalla
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                // Dejamos de observar el elemento para que la animación se ejecute solo una vez
+                observer.unobserve(entry.target); 
+            }
+        });
+    }, {
+        root: null,
+        threshold: 0.15, // Se activa cuando el 15% del elemento es visible
+        rootMargin: "0px 0px -50px 0px" // Margen de seguridad inferior
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+});

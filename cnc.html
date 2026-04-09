@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="style.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 </head>
+    <a href="https://api.whatsapp.com/send/?phone=56935662568" class="whatsapp-float" target="_blank">
+         <i class="fa-brands fa-whatsapp"></i> <span>Cotizar ahora</span>
+    </a>
+
+    <script>
+      (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="hB80GNT3mZ2aCqqXIPLuM";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+    </script>
 <body style="background-color: #121212; color: white;">
 
     <nav class="navbar">
@@ -44,27 +51,27 @@
 
     <main style="padding-top: 120px;">
         <section class="services-section">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <h2 style="color: white;">Manufactura CNC de Gran Formato</h2>
                 <div class="underline"></div>
             </div>
 
             <div class="story-grid">
-                <div class="story-text">
+                <div class="story-text reveal fade-left">
                     <p>Mecanizado CNC a medida. Desde el modelado 3D hasta la ejecución en el router, nos encargamos de que cada corte, grabado o vaciado cumpla con los estándares industriales más exigentes. Lo que lo hace ideal para: Mobiliario especializado, cartelería técnica y componentes industriales.</p>
                     <br>
                     <ul style="list-style: none;">
-                        <li><i class="fa-solid fa-check" style="color:var(--gold)"></i> Corte de maderas nativas y terciados.</li>
-                        <li><i class="fa-solid fa-check" style="color:var(--gold)"></i> Mecanizado de polímeros y acrílicos.</li>
-                        <li><i class="fa-solid fa-check" style="color:var(--gold)"></i> Grabados 2.5D de alta definición.</li>
+                        <li class="reveal delay-1"><i class="fa-solid fa-check" style="color:var(--gold)"></i> Corte de maderas nativas y terciados.</li>
+                        <li class="reveal delay-2"><i class="fa-solid fa-check" style="color:var(--gold)"></i> Mecanizado de polímeros y acrílicos.</li>
+                        <li class="reveal delay-3"><i class="fa-solid fa-check" style="color:var(--gold)"></i> Grabados 2.5D de alta definición.</li>
                     </ul>
                     <a href="https://wa.me/56935662568?text=Hola%20S%26F%20Atelier%2C%20me%20gustar%C3%ADa%20cotizar%20un%20servicio%20de%20corte%20CNC%20a%20medida." 
-                    class="btn-whatsapp" 
+                    class="btn-whatsapp reveal delay-3" 
                     target="_blank">
                     <i class="fa-brands fa-whatsapp"></i> Cotizar Servicio CNC
                     </a>
                 </div>
-                <div class="story-image">
+                <div class="story-image reveal delay-2">
                     <img src="assets/cnc.jpeg" alt="Router CNC S&F" class="img-esencia">
                 </div>
             </div>
