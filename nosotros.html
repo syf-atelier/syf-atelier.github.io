@@ -227,33 +227,7 @@
 
     </main>
 
-    <script src="script.js"></script>
-
-    <script>
-        const slider = document.getElementById('methodSlider');
-        const dots = document.querySelectorAll('.m-dot');
-
-        if(slider && dots.length > 0) {
-            slider.addEventListener('scroll', () => {
-                const scrollLeft = slider.scrollLeft;
-                const cardWidth = slider.offsetWidth * 0.85; // Aproximado al ancho de tarjeta
-                
-                // Calcular en qué tarjeta estamos (0, 1 o 2)
-                const index = Math.round(scrollLeft / cardWidth);
-
-                // Actualizar clase active
-                dots.forEach((dot, i) => {
-                    if (i === index) {
-                        dot.classList.add('active');
-                    } else {
-                        dot.classList.remove('active');
-                    }
-                });
-            });
-        }
-    </script>
-
-        <footer class="main-footer">
+    <footer class="main-footer">
         <div class="footer-container">
             
             <div class="footer-col brand-col">
@@ -305,5 +279,87 @@
         </div>
     </footer>
 
+    <div class="fab-container">
+        <div class="fab-menu">
+            <a href="https://wa.me/56935662568?text=Hola%20S%26F%20Atelier" target="_blank" class="fab-item whatsapp" title="WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <button class="fab-item settings" id="settings-btn" title="Configuración">
+                <i class="fa-solid fa-gear"></i>
+            </button>
+        </div>
+        <button class="fab-main" id="fab-main">
+            <i class="fa-solid fa-plus"></i>
+        </button>
+    </div>
+
+    <div class="settings-modal" id="settings-modal">
+        <div class="settings-header">
+            <h3>Preferencias</h3>
+            <button id="close-settings"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="settings-content">
+            <div class="setting-item">
+                <span><i class="fa-solid fa-volume-high"></i> Voz (Clic para leer)</span>
+                <label class="switch">
+                    <input type="checkbox" id="tts-toggle">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="setting-item">
+                <span><i class="fa-solid fa-text-height"></i> Tamaño Texto</span>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <button id="text-decrease-btn" class="btn-outline" title="Disminuir texto">-</button>
+                    <span id="text-size-display" style="font-weight: bold; width: 45px; text-align: center;">100%</span>
+                    <button id="text-increase-btn" class="btn-outline" title="Aumentar texto">+</button>
+                </div>
+            </div>
+            <div class="setting-item">
+                <span><i class="fa-solid fa-circle-half-stroke"></i> Tema Visual</span>
+                <button id="theme-btn" class="btn-outline">Modo Claro</button>
+            </div>
+            <div class="setting-item" style="flex-direction: column; align-items: flex-start;">
+                <span style="margin-bottom: 10px;"><i class="fa-solid fa-language"></i> Idioma</span>
+                <div id="google_translate_element"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'es', includedLanguages: 'en,es', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        const slider = document.getElementById('methodSlider');
+        const dots = document.querySelectorAll('.m-dot');
+
+        if(slider && dots.length > 0) {
+            slider.addEventListener('scroll', () => {
+                const scrollLeft = slider.scrollLeft;
+                const cardWidth = slider.offsetWidth * 0.85; // Aproximado al ancho de tarjeta
+                
+                // Calcular en qué tarjeta estamos (0, 1 o 2)
+                const index = Math.round(scrollLeft / cardWidth);
+
+                // Actualizar clase active
+                dots.forEach((dot, i) => {
+                    if (i === index) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            });
+        }
+    </script>
+
+    <script src="script.js"></script>
+
+    <script>
+      (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=function(...args){if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(args)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return function(...args){return target(prop,...args)}}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="hB80GNT3mZ2aCqqXIPLuM";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+    </script>
 </body>
 </html>

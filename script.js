@@ -193,3 +193,136 @@ document.addEventListener("DOMContentLoaded", function() {
 
     revealElements.forEach(el => revealObserver.observe(el));
 });
+// ======================================================
+// 7. LÓGICA DEL BOTÓN FLOTANTE (FAB) Y ACCESIBILIDAD
+// ======================================================
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. Control del Menú Flotante
+    const fabMain = document.getElementById('fab-main');
+    const fabContainer = document.querySelector('.fab-container');
+    const settingsBtn = document.getElementById('settings-btn');
+    const settingsModal = document.getElementById('settings-modal');
+    const closeSettings = document.getElementById('close-settings');
+
+    if (fabMain) {
+        fabMain.addEventListener('click', () => {
+            fabContainer.classList.toggle('active');
+            // Cierra el modal si se cierra el menú FAB
+            if (!fabContainer.classList.contains('active')) {
+                settingsModal.classList.remove('active');
+            }
+        });
+    }
+
+    if (settingsBtn) {
+        settingsBtn.addEventListener('click', () => {
+            settingsModal.classList.add('active');
+            fabContainer.classList.remove('active'); // Oculta las bolitas
+        });
+    }
+
+    if (closeSettings) {
+        closeSettings.addEventListener('click', () => {
+            settingsModal.classList.remove('active');
+        });
+    }
+
+    // 2. Control de Tema (Modo Claro/Oscuro) con Memoria
+    const themeBtn = document.getElementById('theme-btn');
+    const currentTheme = localStorage.getItem('sf-theme');
+    
+    if (currentTheme === 'light') {
+        document.body.classList.add('light-theme');
+        if(themeBtn) themeBtn.innerText = 'Modo Oscuro';
+    }
+
+    if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            const isLight = document.body.classList.contains('light-theme');
+            themeBtn.innerText = isLight ? 'Modo Oscuro' : 'Modo Claro';
+            localStorage.setItem('sf-theme', isLight ? 'light' : 'dark');
+        });
+    }
+
+    // 3. Control de Tamaño de Texto (+ / -) con Memoria
+    const decreaseBtn = document.getElementById('text-decrease-btn');
+    const increaseBtn = document.getElementById('text-increase-btn');
+    const sizeDisplay = document.getElementById('text-size-display');
+    
+    let currentZoom = parseInt(localStorage.getItem('sf-text-zoom')) || 100;
+
+    function applyTextZoom(zoomValue) {
+        // 1. Quitar todos los tamaños anteriores
+        document.body.classList.remove('text-zoom-80', 'text-zoom-90', 'text-zoom-110', 'text-zoom-120', 'text-zoom-130', 'text-zoom-140');
+        
+        // 2. Aplicar el nuevo tamaño si no es el 100% (default)
+        if (zoomValue !== 100) {
+            document.body.classList.add(`text-zoom-${zoomValue}`);
+        }
+        
+        // 3. Actualizar el número en el menú
+        if (sizeDisplay) {
+            sizeDisplay.innerText = zoomValue + '%';
+        }
+        
+        // 4. Guardar para que no se borre al cambiar de página
+        localStorage.setItem('sf-text-zoom', zoomValue);
+    }
+
+    // Iniciar con el valor guardado
+    applyTextZoom(currentZoom);
+
+    // Botón Disminuir (-)
+    if (decreaseBtn) {
+        decreaseBtn.addEventListener('click', () => {
+            if (currentZoom > 80) { // Límite mínimo: 80%
+                currentZoom -= 10;
+                applyTextZoom(currentZoom);
+            }
+        });
+    }
+
+    // Botón Aumentar (+)
+    if (increaseBtn) {
+        increaseBtn.addEventListener('click', () => {
+            if (currentZoom < 140) { // Límite máximo: 140%
+                currentZoom += 10;
+                applyTextZoom(currentZoom);
+            }
+        });
+    }
+
+    // 4. Lector de Voz (Text-to-Speech)
+    const ttsToggle = document.getElementById('tts-toggle');
+    let ttsEnabled = false;
+
+    if (ttsToggle) {
+        ttsToggle.addEventListener('change', (e) => {
+            ttsEnabled = e.target.checked;
+            if (!ttsEnabled) {
+                window.speechSynthesis.cancel(); // Detiene la voz si se apaga
+            }
+        });
+    }
+
+    // Escucha clics en la pantalla para leer el texto
+    document.addEventListener('click', (e) => {
+        if (!ttsEnabled) return;
+
+        // Elementos que queremos que lea al hacer clic
+        const target = e.target.closest('p, h1, h2, h3, h4, span, li, a');
+        
+        // Evitar que lea botones internos del panel de configuración
+        if (target && !target.closest('.settings-modal')) {
+            const textToRead = target.innerText;
+            if (textToRead) {
+                window.speechSynthesis.cancel(); // Detiene audios previos
+                const utterance = new SpeechSynthesisUtterance(textToRead);
+                utterance.lang = 'es-CL'; // Español de Chile
+                utterance.rate = 0.9;     // Velocidad un poco más relajada
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+    });
+});
